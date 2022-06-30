@@ -5,6 +5,8 @@ enum COLORS {
 	INACTIVE = "#362b3d",
 	BLUE = "#3f51b5",
 	RED = "#e91e63",
+	DARK = "#111",
+	GRAY = "#ccc",
 }
 
 export default COLORS;

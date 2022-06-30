@@ -4,16 +4,18 @@ import { Feather } from "@expo/vector-icons";
 import Animated from "react-native-reanimated";
 
 import COLORS from "../config/colors";
-import { ICONS } from "../config/types";
+import { ICONS, BUTTON_TYPES } from "../config/types";
 import useButtonAnimation from "../hooks/useButtonAnimation";
 
 export default function Button({
+	type = BUTTON_TYPES.CIRCLE,
 	icon,
 	secondIcon,
 	size = 80,
 	onPress,
 	color,
 }: {
+	type?: BUTTON_TYPES;
 	icon: ICONS;
 	secondIcon?: ICONS;
 	size?: number;
@@ -21,20 +23,23 @@ export default function Button({
 	onPress: () => void;
 }) {
 	const [activeIcon, setActiveIcon] = useState(icon);
-	const buttonAnimation = useButtonAnimation(color);
+	const buttonAnimation = useButtonAnimation({
+		color,
+		maxScale: type === BUTTON_TYPES.CIRCLE ? 1.3 : 1.2,
+	});
 
 	const handlePress = () => {
+		onPress();
+		buttonAnimation.scaleIn();
 		if (secondIcon) {
 			setActiveIcon(activeIcon === icon ? secondIcon : icon);
 			buttonAnimation.animateBgColor();
 		}
-		onPress();
 	};
 
 	return (
 		<Pressable
-			onPress={handlePress}
-			onPressIn={buttonAnimation.scaleIn}
+			onPressIn={handlePress}
 			onPressOut={buttonAnimation.scaleOut}
 			style={styles.container}
 		>
@@ -42,18 +47,19 @@ export default function Button({
 				style={[
 					buttonAnimation.animStyle,
 					{
-						width: size,
-						height: size,
-						borderRadius: size / 2,
+						width: type === BUTTON_TYPES.CIRCLE ? size : size + 50,
+						height: type === BUTTON_TYPES.CIRCLE ? size : size,
+						borderRadius: type === BUTTON_TYPES.CIRCLE ? size / 2 : size,
 					},
+					type !== BUTTON_TYPES.CIRCLE && styles.outline,
 				]}
 			/>
-			<View style={{ position: "absolute" }}>
+			<View style={styles.icon}>
 				<Feather
 					style={activeIcon === ICONS.PLAY && styles.playIcon}
 					name={activeIcon}
-					size={34}
-					color={COLORS.WHITE}
+					size={type === BUTTON_TYPES.CIRCLE ? 34 : 24}
+					color={type === BUTTON_TYPES.CIRCLE ? COLORS.WHITE : COLORS.GRAY}
 				/>
 			</View>
 		</Pressable>
@@ -65,6 +71,14 @@ const styles = StyleSheet.create({
 		flex: 1,
 		justifyContent: "center",
 		alignItems: "center",
+	},
+	outline: {
+		borderColor: COLORS.GRAY,
+		borderStyle: "solid",
+		borderWidth: 1,
+	},
+	icon: {
+		position: "absolute",
 	},
 	playIcon: {
 		marginLeft: 5,

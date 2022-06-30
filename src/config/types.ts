@@ -1,6 +1,11 @@
 export enum ICONS {
 	PLAY = "play",
 	PAUSE = "pause",
-	RESET = "refresh-ccw",
-	FLAG = "flag",
+	RESET = "repeat",
+	ADD = "plus",
+}
+
+export enum BUTTON_TYPES {
+	CIRCLE,
+	RECTANGLE,
 }

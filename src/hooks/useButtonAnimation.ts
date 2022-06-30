@@ -8,11 +8,17 @@ import {
 
 import COLORS from "../config/colors";
 
-const useButtonAnimation = (color: COLORS) => {
+const useButtonAnimation = ({
+	color,
+	maxScale = 1.3,
+}: {
+	color: COLORS;
+	maxScale?: number;
+}) => {
 	const animConfig = {
 		scale: {
 			from: 1,
-			to: 1.3,
+			to: maxScale,
 		},
 		bgColor: {
 			from: color,

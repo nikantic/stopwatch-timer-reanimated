@@ -1,33 +1,46 @@
+import { useState } from "react";
 import { StyleSheet, View } from "react-native";
 
 import Button from "./src/components/Button";
+import SmallClock from "./src/components/SmallClock";
 import COLORS from "./src/config/colors";
-import { ICONS } from "./src/config/types";
+import { BUTTON_TYPES, ICONS } from "./src/config/types";
 
 export default function App() {
+	const [play, setPlay] = useState(false);
+
 	return (
 		<View style={styles.container}>
-			<Button
-				icon={ICONS.PLAY}
-				color={COLORS.MAIN}
-				secondIcon={ICONS.PAUSE}
-				size={90}
-				onPress={() => {}}
-			/>
-			<View style={{ flexDirection: "row", bottom: 50 }}>
+			<View
+				style={{
+					width: "100%",
+					flexDirection: "row",
+					bottom: 50,
+				}}
+			>
 				<Button
-					icon={ICONS.FLAG}
-					color={COLORS.BLUE}
-					size={70}
+					type={BUTTON_TYPES.RECTANGLE}
+					color={COLORS.BLACK}
+					icon={ICONS.RESET}
+					size={50}
 					onPress={() => {}}
 				/>
 				<Button
-					color={COLORS.RED}
-					icon={ICONS.RESET}
-					size={70}
+					icon={ICONS.PLAY}
+					color={COLORS.MAIN}
+					secondIcon={ICONS.PAUSE}
+					size={90}
+					onPress={() => setPlay((play) => !play)}
+				/>
+				<Button
+					type={BUTTON_TYPES.RECTANGLE}
+					icon={ICONS.ADD}
+					color={COLORS.BLACK}
+					size={50}
 					onPress={() => {}}
 				/>
 			</View>
+			<SmallClock paused={!play} />
 		</View>
 	);
 }
