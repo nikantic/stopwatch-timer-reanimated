@@ -9,8 +9,14 @@ import {
 } from "react-native-reanimated";
 import { withPause } from "react-native-redash";
 
-const useClockAnimation = ({ paused }: { paused: boolean }) => {
-	const animPaused = useSharedValue(false);
+const useClockAnimation = ({
+	paused,
+	reset,
+}: {
+	paused: boolean;
+	reset: boolean;
+}) => {
+	const animPaused = useSharedValue(true);
 	const animRotation = useSharedValue(0);
 
 	const animStyles = useAnimatedStyle(() => {
@@ -23,7 +29,7 @@ const useClockAnimation = ({ paused }: { paused: boolean }) => {
 		};
 	}, [animRotation.value]);
 
-	useEffect(() => {
+	const initAnimation = () => {
 		animRotation.value = withPause(
 			withRepeat(
 				withTiming(360, {
@@ -34,13 +40,33 @@ const useClockAnimation = ({ paused }: { paused: boolean }) => {
 			),
 			animPaused
 		);
+	};
 
+	const resetAnimation = () => {
+		animPaused.value = true;
+		animRotation.value = withTiming(
+			0,
+			{
+				duration: 200,
+			},
+			initAnimation
+		);
+	};
+
+	useEffect(() => {
+		initAnimation();
 		return () => cancelAnimation(animRotation);
 	}, []);
 
 	useEffect(() => {
 		animPaused.value = paused;
 	}, [paused]);
+
+	useEffect(() => {
+		if (reset) {
+			resetAnimation();
+		}
+	}, [reset]);
 
 	return {
 		animStyles,

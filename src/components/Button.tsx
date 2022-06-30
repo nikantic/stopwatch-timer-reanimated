@@ -6,26 +6,28 @@ import Animated from "react-native-reanimated";
 import COLORS from "../config/colors";
 import { ICONS, BUTTON_TYPES } from "../config/types";
 import useButtonAnimation from "../hooks/useButtonAnimation";
+import { getButtonDefaults } from "../helpers/getButtonDefaults";
 
 export default function Button({
-	type = BUTTON_TYPES.CIRCLE,
+	type,
 	icon,
 	secondIcon,
-	size = 80,
+	size,
 	onPress,
-	color,
+	color = COLORS.MAIN,
 }: {
 	type?: BUTTON_TYPES;
 	icon: ICONS;
 	secondIcon?: ICONS;
 	size?: number;
-	color: COLORS;
+	color?: COLORS;
 	onPress: () => void;
 }) {
+	const buttonDefaults = getButtonDefaults({ type, size });
 	const [activeIcon, setActiveIcon] = useState(icon);
 	const buttonAnimation = useButtonAnimation({
 		color,
-		maxScale: type === BUTTON_TYPES.CIRCLE ? 1.3 : 1.2,
+		maxScale: buttonDefaults.maxScale,
 	});
 
 	const handlePress = () => {
@@ -44,22 +46,14 @@ export default function Button({
 			style={styles.container}
 		>
 			<Animated.View
-				style={[
-					buttonAnimation.animStyle,
-					{
-						width: type === BUTTON_TYPES.CIRCLE ? size : size + 50,
-						height: type === BUTTON_TYPES.CIRCLE ? size : size,
-						borderRadius: type === BUTTON_TYPES.CIRCLE ? size / 2 : size,
-					},
-					type !== BUTTON_TYPES.CIRCLE && styles.outline,
-				]}
+				style={[buttonAnimation.animStyle, buttonDefaults.styles]}
 			/>
 			<View style={styles.icon}>
 				<Feather
 					style={activeIcon === ICONS.PLAY && styles.playIcon}
 					name={activeIcon}
-					size={type === BUTTON_TYPES.CIRCLE ? 34 : 24}
-					color={type === BUTTON_TYPES.CIRCLE ? COLORS.WHITE : COLORS.GRAY}
+					size={buttonDefaults.iconSize}
+					color={buttonDefaults.iconColor}
 				/>
 			</View>
 		</Pressable>
@@ -71,11 +65,6 @@ const styles = StyleSheet.create({
 		flex: 1,
 		justifyContent: "center",
 		alignItems: "center",
-	},
-	outline: {
-		borderColor: COLORS.GRAY,
-		borderStyle: "solid",
-		borderWidth: 1,
 	},
 	icon: {
 		position: "absolute",

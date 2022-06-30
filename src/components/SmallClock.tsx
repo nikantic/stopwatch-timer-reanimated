@@ -10,19 +10,21 @@ export default function SmallClock({
 	size = 50,
 	strokeWidth = 3,
 	paused,
+	reset,
 }: {
 	bgColor?: COLORS;
 	size?: number;
 	strokeWidth?: number;
 	paused: boolean;
+	reset: boolean;
 }) {
-	const clockAnimation = useClockAnimation({ paused });
+	const clockAnimation = useClockAnimation({ paused, reset });
 
 	return (
 		<Animated.View style={clockAnimation.animStyles}>
 			<Svg width={size} height={size}>
 				<Ellipse
-					stroke-width="0"
+					strokeWidth={0}
 					ry={size / 2}
 					rx={size / 2}
 					cy={size / 2}
@@ -35,7 +37,7 @@ export default function SmallClock({
 					rx={strokeWidth}
 					cy={size / 2}
 					cx={size / 2}
-					stroke-width="0"
+					strokeWidth={0}
 					stroke={COLORS.BLACK}
 					fill={COLORS.WHITE}
 				/>
