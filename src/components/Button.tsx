@@ -6,7 +6,7 @@ import Animated from "react-native-reanimated";
 import COLORS from "../config/colors";
 import { ICONS, BUTTON_TYPES } from "../config/types";
 import useButtonAnimation from "../hooks/useButtonAnimation";
-import { getButtonDefaults } from "../helpers/getButtonDefaults";
+import useButtonDefaults from "../hooks/useButtonDefaults";
 
 export default function Button({
 	type,
@@ -23,8 +23,8 @@ export default function Button({
 	color?: COLORS;
 	onPress: () => void;
 }) {
-	const buttonDefaults = getButtonDefaults({ type, size });
 	const [activeIcon, setActiveIcon] = useState(icon);
+	const buttonDefaults = useButtonDefaults({ type, size });
 	const buttonAnimation = useButtonAnimation({
 		color,
 		maxScale: buttonDefaults.maxScale,

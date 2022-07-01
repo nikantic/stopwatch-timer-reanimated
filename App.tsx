@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { StyleSheet, View } from "react-native";
+import Counter from "./src/components/Counter";
 
 import SmallClock from "./src/components/SmallClock";
 import COLORS from "./src/config/colors";
@@ -16,7 +17,8 @@ export default function App() {
 				onReset={() => {}}
 				onNew={() => setReset((reset) => !reset)}
 			/>
-			<SmallClock paused={!play} reset={reset} />
+			<Counter play={play} />
+			<SmallClock play={play} reset={reset} />
 		</View>
 	);
 }

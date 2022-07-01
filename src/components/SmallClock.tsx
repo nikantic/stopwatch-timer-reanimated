@@ -9,16 +9,16 @@ export default function SmallClock({
 	bgColor = COLORS.DARK,
 	size = 50,
 	strokeWidth = 3,
-	paused,
+	play,
 	reset,
 }: {
 	bgColor?: COLORS;
 	size?: number;
 	strokeWidth?: number;
-	paused: boolean;
+	play: boolean;
 	reset: boolean;
 }) {
-	const clockAnimation = useClockAnimation({ paused, reset });
+	const clockAnimation = useClockAnimation({ play, reset });
 
 	return (
 		<Animated.View style={clockAnimation.animStyles}>

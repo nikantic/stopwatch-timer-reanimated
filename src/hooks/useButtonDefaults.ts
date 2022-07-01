@@ -2,7 +2,7 @@ import { StyleSheet } from "react-native";
 import { BUTTON_TYPES } from "../config/types";
 import COLORS from "../config/colors";
 
-export const getButtonDefaults = ({
+const useButtonDefaults = ({
 	type = BUTTON_TYPES.RECTANGLE,
 	size = 80,
 }: {
@@ -39,3 +39,5 @@ export const getButtonDefaults = ({
 				styles: styles[type],
 		  };
 };
+
+export default useButtonDefaults;

@@ -10,10 +10,10 @@ import {
 import { withPause } from "react-native-redash";
 
 const useClockAnimation = ({
-	paused,
+	play,
 	reset,
 }: {
-	paused: boolean;
+	play: boolean;
 	reset: boolean;
 }) => {
 	const animPaused = useSharedValue(true);
@@ -47,7 +47,7 @@ const useClockAnimation = ({
 		animRotation.value = withTiming(
 			0,
 			{
-				duration: 200,
+				duration: 0,
 			},
 			initAnimation
 		);
@@ -59,8 +59,8 @@ const useClockAnimation = ({
 	}, []);
 
 	useEffect(() => {
-		animPaused.value = paused;
-	}, [paused]);
+		animPaused.value = !play;
+	}, [play]);
 
 	useEffect(() => {
 		if (reset) {
