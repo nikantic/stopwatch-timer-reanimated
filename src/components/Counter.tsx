@@ -7,13 +7,12 @@ import { formatNumber } from "../helpers/helpers";
 
 export default function Counter({ play }: { play: boolean }) {
 	const counter = useCounter();
-
 	const formattedTime = `${formatNumber(counter.time.minutes)} : ${formatNumber(
 		counter.time.seconds
 	)} : ${formatNumber(counter.time.miliseconds)}`;
 
 	useEffect(() => {
-		play ? counter.start() : counter.stop();
+		play ? counter.controls.start() : counter.controls.stop();
 	}, [play]);
 
 	return (

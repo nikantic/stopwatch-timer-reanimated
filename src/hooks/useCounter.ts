@@ -1,24 +1,25 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 import { initTime, INTERVAL } from "../config/types";
 import { calcTime } from "../helpers/helpers";
 
 const useCounter = () => {
 	const [time, setTime] = useState(initTime);
-	const timeInterval = new INTERVAL();
 	const updateTime = () => setTime((time) => calcTime({ ...time }));
 
-	const start = () => timeInterval.startInterval(updateTime);
-	const stop = () => timeInterval.clearInterval();
+	const timeInterval = useRef(new INTERVAL());
+	const controls = {
+		start: () => timeInterval.current.startInterval(updateTime),
+		stop: () => timeInterval.current.clearInterval(),
+	};
 
 	useEffect(() => {
-		return () => timeInterval.clearInterval();
+		return () => controls.stop();
 	}, []);
 
 	return {
 		time,
-		start,
-		stop,
+		controls,
 	};
 };
 

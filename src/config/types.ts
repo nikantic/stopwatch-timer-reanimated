@@ -32,7 +32,6 @@ export class INTERVAL {
 	}
 
 	public clearInterval() {
-		console.log("clear", this.interval);
 		window.clearInterval(this.interval);
 	}
 }
