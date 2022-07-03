@@ -16,6 +16,17 @@ export interface ITime {
 	miliseconds: number;
 }
 
+export interface IAppContext {
+	play: boolean;
+	reset: boolean;
+}
+
+export interface IControls {
+	play: () => void;
+	reset: () => void;
+	new?: () => void;
+}
+
 export const initTime: ITime = {
 	minutes: 0,
 	seconds: 0,

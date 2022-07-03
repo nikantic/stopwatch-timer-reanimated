@@ -43,7 +43,7 @@ const useClockAnimation = ({
 	};
 
 	const resetAnimation = () => {
-		animPaused.value = true;
+		animPaused.value = !play;
 		animRotation.value = withTiming(
 			0,
 			{

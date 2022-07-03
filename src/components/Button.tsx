@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { View, StyleSheet, Pressable } from "react-native";
 import { Feather } from "@expo/vector-icons";
 import Animated from "react-native-reanimated";
@@ -15,10 +15,12 @@ export default function Button({
 	size,
 	onPress,
 	color = COLORS.MAIN,
+	secondIconState,
 }: {
 	type?: BUTTON_TYPES;
 	icon: ICONS;
 	secondIcon?: ICONS;
+	secondIconState?: boolean;
 	size?: number;
 	color?: COLORS;
 	onPress: () => void;
@@ -30,14 +32,19 @@ export default function Button({
 		maxScale: buttonDefaults.maxScale,
 	});
 
+	const toggleIcon = () => {
+		if (secondIcon) {
+			setActiveIcon(secondIconState ? secondIcon : icon);
+			buttonAnimation.animateBgColor(secondIconState ? false : true);
+		}
+	};
+
 	const handlePress = () => {
 		onPress();
 		buttonAnimation.scaleIn();
-		if (secondIcon) {
-			setActiveIcon(activeIcon === icon ? secondIcon : icon);
-			buttonAnimation.animateBgColor();
-		}
 	};
+
+	useEffect(toggleIcon, [secondIconState]);
 
 	return (
 		<Pressable

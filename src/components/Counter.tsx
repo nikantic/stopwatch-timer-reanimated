@@ -1,11 +1,17 @@
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import { View, StyleSheet, Text } from "react-native";
 
 import COLORS from "../config/colors";
 import useCounter from "../hooks/useCounter";
 import { formatNumber } from "../helpers/helpers";
 
-export default function Counter({ play }: { play: boolean }) {
+export default function Counter({
+	play,
+	reset,
+}: {
+	play: boolean;
+	reset: boolean;
+}) {
 	const counter = useCounter();
 	const formattedTime = `${formatNumber(counter.time.minutes)} : ${formatNumber(
 		counter.time.seconds
@@ -14,6 +20,12 @@ export default function Counter({ play }: { play: boolean }) {
 	useEffect(() => {
 		play ? counter.controls.start() : counter.controls.stop();
 	}, [play]);
+
+	useEffect(() => {
+		if (reset) {
+			counter.controls.reset();
+		}
+	}, [reset]);
 
 	return (
 		<View style={styles.container}>

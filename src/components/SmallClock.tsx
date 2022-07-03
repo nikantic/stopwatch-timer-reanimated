@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import Animated from "react-native-reanimated";
 import Svg, { Ellipse, Line } from "react-native-svg";
 

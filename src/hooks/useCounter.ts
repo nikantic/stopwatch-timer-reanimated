@@ -11,6 +11,7 @@ const useCounter = () => {
 	const controls = {
 		start: () => timeInterval.current.startInterval(updateTime),
 		stop: () => timeInterval.current.clearInterval(),
+		reset: () => setTime(initTime),
 	};
 
 	useEffect(() => {

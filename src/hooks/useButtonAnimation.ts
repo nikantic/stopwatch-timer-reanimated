@@ -25,7 +25,6 @@ const useButtonAnimation = ({
 			to: COLORS.INACTIVE,
 		},
 	};
-	const [pressed, setPressed] = useState(false);
 	const animScale = useSharedValue(1);
 	const animBgColor = useSharedValue(0);
 	const animStyle = useAnimatedStyle(() => {
@@ -55,8 +54,7 @@ const useButtonAnimation = ({
 		});
 	};
 
-	const animateBgColor = () => {
-		setPressed((pressed) => !pressed);
+	const animateBgColor = (pressed: boolean) => {
 		animBgColor.value = withSpring(pressed ? 0 : 1, {
 			restSpeedThreshold: 200,
 		});
