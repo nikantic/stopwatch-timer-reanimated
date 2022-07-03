@@ -10,6 +10,11 @@ export enum BUTTON_TYPES {
 	RECTANGLE,
 }
 
+export enum CLOCK_TYPES {
+	STOPWATCH,
+	TIMER
+}
+
 export interface ITime {
 	minutes: number;
 	seconds: number;

@@ -4,6 +4,8 @@ import { View, StyleSheet, Text } from "react-native";
 import COLORS from "../config/colors";
 import useCounter from "../hooks/useCounter";
 import { formatNumber } from "../helpers/helpers";
+import BigClock from "./BigClock";
+import { CLOCK_TYPES } from "../config/types";
 
 export default function Counter({
 	play,
@@ -29,6 +31,11 @@ export default function Counter({
 
 	return (
 		<View style={styles.container}>
+			<BigClock
+				type={CLOCK_TYPES.STOPWATCH}
+				progress={counter.time.miliseconds}
+				progressMax={60}
+			/>
 			<Text style={styles.text}>{formattedTime}</Text>
 		</View>
 	);
