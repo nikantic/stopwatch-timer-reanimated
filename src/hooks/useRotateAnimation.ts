@@ -1,46 +1,42 @@
 import { useEffect } from "react";
 import {
+	useAnimatedStyle,
 	useSharedValue,
 	withTiming,
 	withRepeat,
 	Easing,
 	cancelAnimation,
-	useAnimatedProps,
 } from "react-native-reanimated";
 import { withPause } from "react-native-redash";
-import { CLOCK_TYPES } from "../config/types";
 
-const useClockAnimation = ({
-	type,
+const useRotateAnimation = ({
 	play,
 	reset,
-	length,
-	duration,
 }: {
-	type: CLOCK_TYPES;
 	play: boolean;
 	reset: boolean;
-	length: number;
-	duration: number;
 }) => {
 	const animPaused = useSharedValue(true);
-	const animStroke = useSharedValue(
-		type === CLOCK_TYPES.STOPWATCH ? length : 0
-	);
-	const animProps = useAnimatedProps(() => {
+	const animRotation = useSharedValue(0);
+
+	const animStyles = useAnimatedStyle(() => {
 		return {
-			strokeDashoffset: animStroke.value,
+			transform: [
+				{
+					rotateZ: `${animRotation.value}deg`,
+				},
+			],
 		};
-	}, [animStroke.value]);
+	}, [animRotation.value]);
 
 	const initAnimation = () => {
-		animStroke.value = withPause(
+		animRotation.value = withPause(
 			withRepeat(
-				withTiming(type === CLOCK_TYPES.STOPWATCH ? 0 : length, {
-					duration,
+				withTiming(360, {
+					duration: 1000,
 					easing: Easing.linear,
 				}),
-				type === CLOCK_TYPES.STOPWATCH ? -1 : 1
+				-1
 			),
 			animPaused
 		);
@@ -48,10 +44,10 @@ const useClockAnimation = ({
 
 	const resetAnimation = () => {
 		animPaused.value = !play;
-		animStroke.value = withTiming(
-			type === CLOCK_TYPES.STOPWATCH ? length : 0,
+		animRotation.value = withTiming(
+			0,
 			{
-				duration: 100,
+				duration: 0,
 			},
 			initAnimation
 		);
@@ -59,7 +55,7 @@ const useClockAnimation = ({
 
 	useEffect(() => {
 		initAnimation();
-		return () => cancelAnimation(animStroke);
+		return () => cancelAnimation(animRotation);
 	}, []);
 
 	useEffect(() => {
@@ -73,8 +69,8 @@ const useClockAnimation = ({
 	}, [reset]);
 
 	return {
-		animProps,
+		animStyles,
 	};
 };
 
-export default useClockAnimation;
+export default useRotateAnimation;

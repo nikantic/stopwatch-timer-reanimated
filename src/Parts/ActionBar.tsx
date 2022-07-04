@@ -1,5 +1,5 @@
 import React from "react";
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet, ViewStyle } from "react-native";
 
 import Button from "../components/Button";
 import { BUTTON_TYPES, ICONS, IControls } from "../config/types";
@@ -8,12 +8,14 @@ import COLORS from "../config/colors";
 export default function ActionBar({
 	controls,
 	play,
+	style,
 }: {
 	controls: IControls;
 	play: boolean;
+	style?: ViewStyle;
 }) {
 	return (
-		<View style={styles.container}>
+		<View style={[styles.container, { ...style }]}>
 			{controls.reset && (
 				<Button
 					color={COLORS.BLACK}
@@ -47,8 +49,8 @@ export default function ActionBar({
 
 const styles = StyleSheet.create({
 	container: {
+		flex: 1,
 		width: "100%",
 		flexDirection: "row",
-		bottom: 50,
 	},
 });

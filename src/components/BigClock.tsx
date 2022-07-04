@@ -1,39 +1,44 @@
 import React from "react";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, StyleSheetProperties, View } from "react-native";
 import Animated from "react-native-reanimated";
 import Svg, { Circle } from "react-native-svg";
 
 import COLORS from "../config/colors";
 import { CLOCK_TYPES } from "../config/types";
 import useCircle from "../hooks/useCircle";
+import useClockAnimation from "../hooks/useClockAnimation";
+
+const AnimatedCircle = Animated.createAnimatedComponent(Circle);
 
 export default function BigClock({
 	type,
-	progress,
-	progressMax,
-	size = 300,
+	duration,
+	size = 250,
 	color = COLORS.MAIN,
+	play,
+	reset,
 }: {
 	type: CLOCK_TYPES;
-	progress: number;
-	progressMax: number;
+	duration: number;
 	size?: number;
 	color?: COLORS;
+	play: boolean;
+	reset: boolean;
 }) {
-	// Timer support as well
-	// use animatedStyles?
 	const circleConfig = useCircle({ size });
-	const progressUnit = circleConfig.length / progressMax;
-	const progressLength =
-		type === CLOCK_TYPES.STOPWATCH
-			? circleConfig.length - progressUnit * progress
-			: progressUnit * progress;
-	console.log(progress);
+	const clockAnimation = useClockAnimation({
+		type,
+		play,
+		reset,
+		duration,
+		length: circleConfig.length,
+	});
 
 	return (
 		<View>
 			<Svg width={size} height={size} style={styles.svg}>
-				<Circle
+				<AnimatedCircle
+					animatedProps={clockAnimation.animProps}
 					cx={size / 2}
 					cy={size / 2}
 					r={circleConfig.radius}
@@ -42,7 +47,6 @@ export default function BigClock({
 					strokeWidth={10}
 					strokeLinecap="round"
 					strokeDasharray={circleConfig.length}
-					strokeDashoffset={progressLength}
 				/>
 			</Svg>
 		</View>

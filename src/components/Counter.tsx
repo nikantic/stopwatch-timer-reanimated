@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from "react";
-import { View, StyleSheet, Text } from "react-native";
+import { View, StyleSheet, Text, StyleProp, ViewStyle } from "react-native";
 
 import COLORS from "../config/colors";
 import useCounter from "../hooks/useCounter";
@@ -10,9 +10,11 @@ import { CLOCK_TYPES } from "../config/types";
 export default function Counter({
 	play,
 	reset,
+	style,
 }: {
 	play: boolean;
 	reset: boolean;
+	style?: ViewStyle;
 }) {
 	const counter = useCounter();
 	const formattedTime = `${formatNumber(counter.time.minutes)} : ${formatNumber(
@@ -30,19 +32,13 @@ export default function Counter({
 	}, [reset]);
 
 	return (
-		<View style={styles.container}>
-			<BigClock
-				type={CLOCK_TYPES.STOPWATCH}
-				progress={counter.time.miliseconds}
-				progressMax={60}
-			/>
+		<View style={style}>
 			<Text style={styles.text}>{formattedTime}</Text>
 		</View>
 	);
 }
 
 const styles = StyleSheet.create({
-	container: {},
 	text: {
 		color: COLORS.WHITE,
 		fontSize: 30,

@@ -3,7 +3,7 @@ import Animated from "react-native-reanimated";
 import Svg, { Ellipse, Line } from "react-native-svg";
 
 import COLORS from "../config/colors";
-import useClockAnimation from "../hooks/useClockAnimation";
+import useRotateAnimation from "../hooks/useRotateAnimation";
 
 export default function SmallClock({
 	bgColor = COLORS.DARK,
@@ -18,10 +18,10 @@ export default function SmallClock({
 	play: boolean;
 	reset: boolean;
 }) {
-	const clockAnimation = useClockAnimation({ play, reset });
+	const rotateAnimation = useRotateAnimation({ play, reset });
 
 	return (
-		<Animated.View style={clockAnimation.animStyles}>
+		<Animated.View style={rotateAnimation.animStyles}>
 			<Svg width={size} height={size}>
 				<Ellipse
 					strokeWidth={0}
