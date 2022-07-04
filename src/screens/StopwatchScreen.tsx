@@ -2,11 +2,9 @@ import { useEffect, useState } from "react";
 import { StyleSheet, View } from "react-native";
 import Counter from "../components/Counter";
 
-import SmallClock from "../components/SmallClock";
-import COLORS from "../config/colors";
-import { IControls, CLOCK_TYPES } from "../config/types";
+import { IControls } from "../config/types";
 import ActionBar from "../Parts/ActionBar";
-import BigClock from "../components/BigClock";
+import Clock from "../Parts/Clock";
 
 export default function StopwatchScreen() {
 	const [play, setPlay] = useState(false);
@@ -27,20 +25,9 @@ export default function StopwatchScreen() {
 		},
 	};
 
-	// add new group
-
 	return (
 		<View style={styles.container}>
-			<View style={styles.clock}>
-				<Counter style={styles.counter} play={play} reset={reset} />
-				<BigClock
-					type={CLOCK_TYPES.TIMER}
-					play={play}
-					reset={reset}
-					duration={5000}
-				/>
-				<SmallClock play={play} reset={reset} />
-			</View>
+			<Clock style={styles.clock} play={play} reset={reset} />
 			<ActionBar style={styles.actionBar} controls={controls} play={play} />
 		</View>
 	);
@@ -49,20 +36,11 @@ export default function StopwatchScreen() {
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		backgroundColor: COLORS.BLACK,
-		alignItems: "center",
-		justifyContent: "center",
 	},
 	actionBar: {
 		flex: 1,
 	},
 	clock: {
 		flex: 2,
-		backgroundColor: "green",
-		alignItems: "center",
-		justifyContent: "center",
-	},
-	counter: {
-		position: "absolute",
 	},
 });

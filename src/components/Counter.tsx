@@ -41,7 +41,7 @@ export default function Counter({
 const styles = StyleSheet.create({
 	text: {
 		color: COLORS.WHITE,
-		fontSize: 30,
+		fontSize: 27,
 		fontFamily: "monospace",
 	},
 });

@@ -13,7 +13,7 @@ const AnimatedCircle = Animated.createAnimatedComponent(Circle);
 export default function BigClock({
 	type,
 	duration,
-	size = 250,
+	size = 280,
 	color = COLORS.MAIN,
 	play,
 	reset,

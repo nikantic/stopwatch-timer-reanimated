@@ -15,7 +15,7 @@ export default function ActionBar({
 	style?: ViewStyle;
 }) {
 	return (
-		<View style={[styles.container, { ...style }]}>
+		<View style={[styles.container, style]}>
 			{controls.reset && (
 				<Button
 					color={COLORS.BLACK}
