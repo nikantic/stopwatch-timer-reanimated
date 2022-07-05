@@ -5,7 +5,7 @@ import { IControls, CLOCK_TYPES } from "../config/types";
 import ActionBar from "../Parts/ActionBar";
 import Clock from "../Parts/Clock";
 
-export default function StopwatchScreen() {
+export default function TimerScreen() {
 	const [play, setPlay] = useState(false);
 	const [reset, setReset] = useState(false);
 
@@ -17,7 +17,6 @@ export default function StopwatchScreen() {
 
 	const controls: IControls = {
 		play: () => setPlay((play) => !play),
-		new: () => setReset(true),
 		reset: () => {
 			setPlay(false);
 			setReset(true);
@@ -27,7 +26,7 @@ export default function StopwatchScreen() {
 	return (
 		<View style={styles.container}>
 			<Clock
-				type={CLOCK_TYPES.STOPWATCH}
+				type={CLOCK_TYPES.TIMER}
 				style={styles.clock}
 				play={play}
 				reset={reset}

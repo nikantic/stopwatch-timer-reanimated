@@ -5,18 +5,20 @@ import COLORS from "../config/colors";
 import useCounter from "../hooks/useCounter";
 import { formatNumber } from "../helpers/helpers";
 import BigClock from "./BigClock";
-import { CLOCK_TYPES } from "../config/types";
+import { CLOCK_TYPES, ITime } from "../config/types";
 
 export default function Counter({
 	play,
 	reset,
 	style,
+	timer,
 }: {
 	play: boolean;
 	reset: boolean;
 	style?: ViewStyle;
+	timer?: ITime;
 }) {
-	const counter = useCounter();
+	const counter = useCounter({ timer });
 	const formattedTime = `${formatNumber(counter.time.minutes)} : ${formatNumber(
 		counter.time.seconds
 	)} : ${formatNumber(counter.time.miliseconds)}`;
