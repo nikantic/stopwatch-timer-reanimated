@@ -1,26 +1,24 @@
-import React from "react";
+import React, { useContext } from "react";
 import { View, ViewStyle } from "react-native";
 import Animated from "react-native-reanimated";
 import Svg, { Ellipse, Line } from "react-native-svg";
 
 import COLORS from "../config/colors";
+import AppContext from "../config/context";
 import useRotateAnimation from "../hooks/useRotateAnimation";
 
 export default function SmallClock({
 	bgColor = COLORS.DARK,
 	size = 50,
 	strokeWidth = 3,
-	play,
-	reset,
 	style,
 }: {
 	bgColor?: COLORS;
 	size?: number;
 	strokeWidth?: number;
-	play: boolean;
-	reset: boolean;
 	style: ViewStyle;
 }) {
+	const { play, reset } = useContext(AppContext);
 	const rotateAnimation = useRotateAnimation({ play, reset });
 
 	return (

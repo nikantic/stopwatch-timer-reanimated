@@ -1,14 +1,14 @@
 import { View, StyleSheet } from "react-native";
 
 import COLORS from "./src/config/colors";
-import StopwatchScreen from "./src/screens/StopwatchScreen";
-import TimerScreen from "./src/screens/TimerScreen";
+import Stopwatch from "./src/apps/Stopwatch";
+import Timer from "./src/apps/Timer";
 
 export default function App() {
 	return (
 		<View style={styles.container}>
-			{/* <StopwatchScreen /> */}
-			<TimerScreen />
+			{/* <Stopwatch /> */}
+			<Timer />
 		</View>
 	);
 }

@@ -3,8 +3,6 @@ import { useEffect, useState, useRef } from "react";
 import { CLOCK_TYPES, initTime, INTERVAL, ITime } from "../config/types";
 import { countTime } from "../helpers/helpers";
 
-// check as well if value is valid
-
 const useCounter = ({ timer }: { timer?: ITime }) => {
 	const [time, setTime] = useState(timer ? timer : initTime);
 	const updateTime = () =>

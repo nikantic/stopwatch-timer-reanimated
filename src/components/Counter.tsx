@@ -1,27 +1,31 @@
 import React, { useContext, useEffect } from "react";
-import { View, StyleSheet, Text, StyleProp, ViewStyle } from "react-native";
+import { View, StyleSheet, Text, ViewStyle, Alert } from "react-native";
 
 import COLORS from "../config/colors";
 import useCounter from "../hooks/useCounter";
-import { formatNumber } from "../helpers/helpers";
-import BigClock from "./BigClock";
-import { CLOCK_TYPES, ITime } from "../config/types";
+import { timerFinished, formatNumber } from "../helpers/helpers";
+import { ITime } from "../config/types";
+import AppContext from "../config/context";
 
 export default function Counter({
-	play,
-	reset,
 	style,
 	timer,
 }: {
-	play: boolean;
-	reset: boolean;
 	style?: ViewStyle;
 	timer?: ITime;
 }) {
+	const { play, reset, controls } = useContext(AppContext);
 	const counter = useCounter({ timer });
-	const formattedTime = `${formatNumber(counter.time.minutes)} : ${formatNumber(
-		counter.time.seconds
-	)} : ${formatNumber(counter.time.miliseconds)}`;
+	const formattedTime = `${formatNumber(counter.time.hours)}h : ${formatNumber(
+		counter.time.minutes
+	)}m : ${formatNumber(counter.time.seconds)}s`;
+
+	if (play && timer && timerFinished(counter.time)) {
+		setTimeout(() => {
+			controls.reset();
+			Alert.alert("Finished", "Time has finished running");
+		});
+	}
 
 	useEffect(() => {
 		play ? counter.controls.start() : counter.controls.stop();

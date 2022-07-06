@@ -9,40 +9,26 @@ import { timeToMiliseconds } from "../helpers/helpers";
 
 export default function Clock({
 	type,
-	play,
-	reset,
 	style,
 }: {
 	type: CLOCK_TYPES;
-	play: boolean;
-	reset: boolean;
 	style?: ViewStyle;
 }) {
-	// time gets converted to miliseconds here
+	// send local notification on finished and fix android issue on animation end
+	// limit clock to the width of device
+	// check as well if value is valid
 	// different colors
-	// send local notification on finished
 	const enteredTime = {
+		hours: 0,
 		minutes: 0,
 		seconds: 10,
-		miliseconds: 0,
 	};
 	const timeInMiliseconds = timeToMiliseconds(enteredTime);
-	console.log(timeInMiliseconds);
 	return (
 		<View style={[styles.container, style]}>
-			<Counter
-				style={styles.counter}
-				play={play}
-				reset={reset}
-				timer={enteredTime}
-			/>
-			<BigClock
-				type={type}
-				play={play}
-				reset={reset}
-				duration={timeInMiliseconds}
-			/>
-			<SmallClock style={styles.smallClock} play={play} reset={reset} />
+			<Counter style={styles.counter} timer={enteredTime} />
+			<BigClock type={type} duration={timeInMiliseconds} />
+			<SmallClock style={styles.smallClock} />
 		</View>
 	);
 }

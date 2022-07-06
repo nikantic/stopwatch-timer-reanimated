@@ -1,19 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import { View, StyleSheet, ViewStyle } from "react-native";
 
 import Button from "../components/Button";
-import { BUTTON_TYPES, ICONS, IControls } from "../config/types";
+import { BUTTON_TYPES, ICONS } from "../config/types";
 import COLORS from "../config/colors";
+import AppContext from "../config/context";
 
-export default function ActionBar({
-	controls,
-	play,
-	style,
-}: {
-	controls: IControls;
-	play: boolean;
-	style?: ViewStyle;
-}) {
+export default function ActionBar({ style }: { style?: ViewStyle }) {
+	const { play, controls } = useContext(AppContext);
 	return (
 		<View style={[styles.container, style]}>
 			{controls.reset && (

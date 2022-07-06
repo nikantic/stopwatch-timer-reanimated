@@ -4,17 +4,11 @@ import { StyleSheet, View } from "react-native";
 import { IControls, CLOCK_TYPES } from "../config/types";
 import ActionBar from "../Parts/ActionBar";
 import Clock from "../Parts/Clock";
+import AppContext from "../config/context";
 
-export default function TimerScreen() {
+export default function Timer() {
 	const [play, setPlay] = useState(false);
 	const [reset, setReset] = useState(false);
-
-	useEffect(() => {
-		if (reset && play) {
-			setReset(false);
-		}
-	}, [reset, play]);
-
 	const controls: IControls = {
 		play: () => setPlay((play) => !play),
 		reset: () => {
@@ -23,16 +17,19 @@ export default function TimerScreen() {
 		},
 	};
 
+	useEffect(() => {
+		if (reset && play) {
+			setReset(false);
+		}
+	}, [reset, play]);
+
 	return (
-		<View style={styles.container}>
-			<Clock
-				type={CLOCK_TYPES.TIMER}
-				style={styles.clock}
-				play={play}
-				reset={reset}
-			/>
-			<ActionBar style={styles.actionBar} controls={controls} play={play} />
-		</View>
+		<AppContext.Provider value={{ play, reset, controls }}>
+			<View style={styles.container}>
+				<Clock type={CLOCK_TYPES.TIMER} style={styles.clock} />
+				<ActionBar style={styles.actionBar} />
+			</View>
+		</AppContext.Provider>
 	);
 }
 

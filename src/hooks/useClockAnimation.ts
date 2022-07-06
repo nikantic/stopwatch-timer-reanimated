@@ -4,7 +4,6 @@ import {
 	withTiming,
 	withRepeat,
 	Easing,
-	cancelAnimation,
 	useAnimatedProps,
 } from "react-native-reanimated";
 import { withPause } from "react-native-redash";
@@ -47,22 +46,19 @@ const useClockAnimation = ({
 	};
 
 	const resetAnimation = () => {
-		animPaused.value = !play;
+		animPaused.value = false;
 		animStroke.value = withTiming(
-			type === CLOCK_TYPES.STOPWATCH ? length : 0,
+			type === CLOCK_TYPES.STOPWATCH ? length : 0.0001,
 			{
-				duration: 100,
-			},
-			initAnimation
+				duration: type === CLOCK_TYPES.STOPWATCH ? 0 : 500,
+			}
 		);
 	};
 
 	useEffect(() => {
-		initAnimation();
-		return () => cancelAnimation(animStroke);
-	}, []);
-
-	useEffect(() => {
+		if (play) {
+			initAnimation();
+		}
 		animPaused.value = !play;
 	}, [play]);
 

@@ -5,7 +5,6 @@ import {
 	withTiming,
 	withRepeat,
 	Easing,
-	cancelAnimation,
 } from "react-native-reanimated";
 import { withPause } from "react-native-redash";
 
@@ -43,22 +42,16 @@ const useRotateAnimation = ({
 	};
 
 	const resetAnimation = () => {
-		animPaused.value = !play;
-		animRotation.value = withTiming(
-			0,
-			{
-				duration: 0,
-			},
-			initAnimation
-		);
+		animPaused.value = false;
+		animRotation.value = withTiming(0, {
+			duration: 0,
+		});
 	};
 
 	useEffect(() => {
-		initAnimation();
-		return () => cancelAnimation(animRotation);
-	}, []);
-
-	useEffect(() => {
+		if (play) {
+			initAnimation();
+		}
 		animPaused.value = !play;
 	}, [play]);
 

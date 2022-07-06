@@ -12,13 +12,13 @@ export enum BUTTON_TYPES {
 
 export enum CLOCK_TYPES {
 	STOPWATCH,
-	TIMER
+	TIMER,
 }
 
 export interface ITime {
+	hours: number;
 	minutes: number;
 	seconds: number;
-	miliseconds: number;
 }
 
 export interface IAppContext {
@@ -32,14 +32,30 @@ export interface IControls {
 	new?: () => void;
 }
 
+export interface IContext {
+	play: boolean;
+	reset: boolean;
+	controls: IControls;
+}
+
 export const initTime: ITime = {
+	hours: 0,
 	minutes: 0,
 	seconds: 0,
-	miliseconds: 0,
+};
+
+export const initContext: IContext = {
+	play: false,
+	reset: false,
+	controls: {
+		play: () => {},
+		reset: () => {},
+		new: () => {},
+	},
 };
 
 export class INTERVAL {
-	private intervalRate = 1000 / 60;
+	private intervalRate = 1000;
 	private interval = 0;
 
 	public startInterval(callback: Function) {
