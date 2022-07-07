@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import { StyleSheet, View } from "react-native";
 
 import { IControls, CLOCK_TYPES } from "../config/types";
-import ActionBar from "../Parts/ActionBar";
-import Clock from "../Parts/Clock";
+import ActionBar from "../Partials/ActionBar";
+import Clock from "../Partials/Clock";
 import AppContext from "../config/context";
 
 export default function Stopwatch() {
