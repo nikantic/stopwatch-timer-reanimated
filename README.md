@@ -9,3 +9,12 @@ Fixed:
 
 - Android crash on reset
 - Big clock animation out of sync for some reason
+
+Todo:
+
+- limit clock to the width of device
+- different colors for stopwatch and timer
+- labels file
+- tap on clock in Timer opens modal
+- Build draggable modal (close on tap outside)
+- Build List

@@ -37,6 +37,14 @@ export default function ActionBar({ style }: { style?: ViewStyle }) {
 					onPress={controls.new}
 				/>
 			)}
+			{controls.edit && (
+				<Button
+					icon={ICONS.EDIT}
+					color={COLORS.BLACK}
+					size={50}
+					onPress={controls.edit}
+				/>
+			)}
 		</View>
 	);
 }

@@ -7,6 +7,7 @@ enum COLORS {
 	RED = "#e91e63",
 	DARK = "#111",
 	GRAY = "#ccc",
+	TRANSPARENT = "transparent",
 }
 
 export default COLORS;

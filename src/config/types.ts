@@ -3,11 +3,13 @@ export enum ICONS {
 	PAUSE = "pause",
 	RESET = "repeat",
 	ADD = "plus",
+	EDIT = "edit-2",
 }
 
 export enum BUTTON_TYPES {
 	CIRCLE,
 	RECTANGLE,
+	TEXT,
 }
 
 export enum CLOCK_TYPES {
@@ -30,6 +32,7 @@ export interface IControls {
 	play: () => void;
 	reset: () => void;
 	new?: () => void;
+	edit?: () => void;
 }
 
 export interface IContext {
@@ -37,6 +40,18 @@ export interface IContext {
 	reset: boolean;
 	controls: IControls;
 }
+
+export interface ITimeInput {
+	hours: string;
+	minutes: string;
+	seconds: string;
+}
+
+export const inputTime: ITimeInput = {
+	hours: "",
+	minutes: "",
+	seconds: "10",
+};
 
 export const initTime: ITime = {
 	hours: 0,

@@ -2,9 +2,11 @@ import { useEffect, useState } from "react";
 import { StyleSheet, View } from "react-native";
 
 import { IControls, CLOCK_TYPES } from "../config/types";
-import ActionBar from "../Parts/ActionBar";
-import Clock from "../Parts/Clock";
+import ActionBar from "../Partials/ActionBar";
+import Clock from "../Partials/Clock";
 import AppContext from "../config/context";
+import ModalWrapper from "../components/ModalWrapper";
+import TimerEdit from "../Screens/TimerEdit";
 
 export default function Timer() {
 	const [play, setPlay] = useState(false);
@@ -14,6 +16,9 @@ export default function Timer() {
 		reset: () => {
 			setPlay(false);
 			setReset(true);
+		},
+		edit: () => {
+			// set time to
 		},
 	};
 
@@ -28,6 +33,9 @@ export default function Timer() {
 			<View style={styles.container}>
 				<Clock type={CLOCK_TYPES.TIMER} style={styles.clock} />
 				<ActionBar style={styles.actionBar} />
+				<ModalWrapper heading="Edit Timer">
+					<TimerEdit />
+				</ModalWrapper>
 			</View>
 		</AppContext.Provider>
 	);

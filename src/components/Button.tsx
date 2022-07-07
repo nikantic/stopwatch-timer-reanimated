@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { View, StyleSheet, Pressable } from "react-native";
+import { View, StyleSheet, Pressable, Text } from "react-native";
 import { Feather } from "@expo/vector-icons";
 import Animated from "react-native-reanimated";
 
@@ -14,14 +14,16 @@ export default function Button({
 	secondIcon,
 	size,
 	onPress,
+	text,
 	color = COLORS.MAIN,
 	secondIconState,
 }: {
 	type?: BUTTON_TYPES;
-	icon: ICONS;
+	icon?: ICONS;
 	secondIcon?: ICONS;
 	secondIconState?: boolean;
 	size?: number;
+	text?: string;
 	color?: COLORS;
 	onPress: () => void;
 }) {
@@ -55,14 +57,18 @@ export default function Button({
 			<Animated.View
 				style={[buttonAnimation.animStyle, buttonDefaults.styles]}
 			/>
-			<View style={styles.icon}>
-				<Feather
-					style={activeIcon === ICONS.PLAY && styles.playIcon}
-					name={activeIcon}
-					size={buttonDefaults.iconSize}
-					color={buttonDefaults.iconColor}
-				/>
-			</View>
+			{type === BUTTON_TYPES.TEXT ? (
+				<Text style={[buttonDefaults.textStyles, styles.absolute]}>{text}</Text>
+			) : (
+				<View style={styles.absolute}>
+					<Feather
+						style={activeIcon === ICONS.PLAY && styles.playIcon}
+						name={activeIcon}
+						size={buttonDefaults.iconSize}
+						color={buttonDefaults.iconColor}
+					/>
+				</View>
+			)}
 		</Pressable>
 	);
 }
@@ -73,7 +79,7 @@ const styles = StyleSheet.create({
 		justifyContent: "center",
 		alignItems: "center",
 	},
-	icon: {
+	absolute: {
 		position: "absolute",
 	},
 	playIcon: {
