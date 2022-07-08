@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { StyleSheet, View } from "react-native";
 
 import { IControls, CLOCK_TYPES } from "../config/types";
@@ -8,21 +8,17 @@ import AppContext from "../config/context";
 
 export default function Stopwatch() {
 	const [play, setPlay] = useState(false);
-	const [reset, setReset] = useState(false);
+	const [reset, setReset] = useState(0);
+	const handleReset = () => setReset((reset) => reset + 1);
+
 	const controls: IControls = {
 		play: () => setPlay((play) => !play),
-		new: () => setReset(true),
+		new: () => handleReset(),
 		reset: () => {
 			setPlay(false);
-			setReset(true);
+			handleReset();
 		},
 	};
-
-	useEffect(() => {
-		if (reset && play) {
-			setReset(false);
-		}
-	}, [reset, play]);
 
 	return (
 		<AppContext.Provider value={{ play, reset, controls }}>

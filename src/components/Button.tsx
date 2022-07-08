@@ -17,6 +17,7 @@ export default function Button({
 	text,
 	color = COLORS.MAIN,
 	secondIconState,
+	disabled,
 }: {
 	type?: BUTTON_TYPES;
 	icon?: ICONS;
@@ -26,11 +27,12 @@ export default function Button({
 	text?: string;
 	color?: COLORS;
 	onPress: () => void;
+	disabled?: boolean;
 }) {
 	const [activeIcon, setActiveIcon] = useState(icon);
 	const buttonDefaults = useButtonDefaults({ type, size });
 	const buttonAnimation = useButtonAnimation({
-		color,
+		color: disabled ? COLORS.INACTIVE : color,
 		maxScale: buttonDefaults.maxScale,
 	});
 
@@ -42,8 +44,10 @@ export default function Button({
 	};
 
 	const handlePress = () => {
-		onPress();
-		buttonAnimation.scaleIn();
+		if (!disabled) {
+			onPress();
+			buttonAnimation.scaleIn();
+		}
 	};
 
 	useEffect(toggleIcon, [secondIconState]);

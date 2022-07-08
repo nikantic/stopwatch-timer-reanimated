@@ -1,10 +1,11 @@
 import { useEffect, useState, useRef } from "react";
 
-import { CLOCK_TYPES, initTime, INTERVAL, ITime } from "../config/types";
+import { CLOCK_TYPES, INTERVAL, ITime } from "../config/types";
+import inits from "../config/inits";
 import { countTime } from "../helpers/helpers";
 
 const useCounter = ({ timer }: { timer?: ITime }) => {
-	const [time, setTime] = useState(timer ? timer : initTime);
+	const [time, setTime] = useState(timer ? timer : inits.zeroTime);
 	const updateTime = () =>
 		setTime((time) =>
 			countTime({
@@ -17,7 +18,7 @@ const useCounter = ({ timer }: { timer?: ITime }) => {
 	const controls = {
 		start: () => timeInterval.current.startInterval(updateTime),
 		stop: () => timeInterval.current.clearInterval(),
-		reset: () => setTime(timer ? timer : initTime),
+		reset: () => setTime(timer ? timer : inits.zeroTime),
 	};
 
 	useEffect(() => {

@@ -18,7 +18,7 @@ const useClockAnimation = ({
 }: {
 	type: CLOCK_TYPES;
 	play: boolean;
-	reset: boolean;
+	reset: number;
 	length: number;
 	duration: number;
 }) => {
@@ -63,7 +63,7 @@ const useClockAnimation = ({
 	}, [play]);
 
 	useEffect(() => {
-		if (reset) {
+		if (reset > 0) {
 			resetAnimation();
 		}
 	}, [reset]);

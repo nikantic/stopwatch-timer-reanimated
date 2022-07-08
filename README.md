@@ -12,8 +12,7 @@ Fixed:
 
 To do:
 
-- Timer: Complete TimerEdit screen inputs and Timer state (edit) - check validation
-- Stopwatch: Add FlatList and SavedTimes screen
+- Stopwatch: SavedTimes screen (Flatlist)
 - Navigation
 - Deploy app
 - Test on iOS and Android simulators
@@ -25,7 +24,8 @@ To fix:
 - Limit clock to the width of device
 - Web styling fixes
 - Different Colors for stopwatch and timer
+- Check Stopwatch Count function logic again
 
-Possible:
+Future:
 
 - Localization and single labels file

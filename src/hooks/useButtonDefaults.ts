@@ -48,7 +48,7 @@ const useButtonDefaults = ({
 			borderWidth: 1,
 		},
 		[BUTTON_TYPES.TEXT]: {
-			width: size + 50,
+			width: size + 70,
 			height: size,
 			borderRadius: size,
 		},

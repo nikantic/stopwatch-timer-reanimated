@@ -4,26 +4,19 @@ import { View, StyleSheet, Modal, Text } from "react-native";
 import COLORS from "../config/colors";
 
 export default function ModalWrapper({
+	open,
 	heading,
 	children,
 }: {
+	open: boolean;
 	heading: string;
 	children: JSX.Element;
 }) {
-	const [open, setOpen] = useState(true);
-
 	return (
-		<Modal
-			transparent
-			animationType="slide"
-			visible={open}
-			onRequestClose={() => {
-				setOpen(false);
-			}}
-		>
+		<Modal transparent animationType="slide" visible={open}>
 			<View style={styles.modalView}>
 				<Text style={styles.heading}>{heading}</Text>
-				<View>{children}</View>
+				<View style={styles.childrenView}>{children}</View>
 			</View>
 		</Modal>
 	);
@@ -34,7 +27,7 @@ const styles = StyleSheet.create({
 		position: "absolute",
 		width: "101%",
 		left: -1,
-		height: "70%",
+		height: "60%",
 		backgroundColor: COLORS.BLACK,
 		borderTopLeftRadius: 30,
 		borderTopEndRadius: 30,
@@ -57,5 +50,10 @@ const styles = StyleSheet.create({
 		marginVertical: 20,
 		fontSize: 22,
 		color: COLORS.WHITE,
+		borderBottomWidth: 1,
+		borderBottomColor: COLORS.GRAY,
+	},
+	childrenView: {
+		flex: 1,
 	},
 });

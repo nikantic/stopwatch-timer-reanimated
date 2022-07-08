@@ -42,7 +42,7 @@ export default function ActionBar({ style }: { style?: ViewStyle }) {
 					icon={ICONS.EDIT}
 					color={COLORS.BLACK}
 					size={50}
-					onPress={controls.edit}
+					onPress={() => controls.openModal && controls.openModal(true)}
 				/>
 			)}
 		</View>

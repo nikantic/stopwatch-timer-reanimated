@@ -1,4 +1,5 @@
-import { CLOCK_TYPES, initTime, ITime } from "../config/types";
+import { CLOCK_TYPES, ITime } from "../config/types";
+import inits from "../config/inits";
 
 export const formatNumber = (number: number) => {
 	return number < 10 ? "0" + number : number;
@@ -8,11 +9,26 @@ export const timeToMiliseconds = (time: ITime) => {
 	return time.hours * 3.6e6 + time.minutes * 60000 + time.seconds * 1000;
 };
 
-export const timerFinished = (time: ITime): boolean => {
+export const timerZero = (time: ITime): boolean => {
 	return time.hours === 0 && time.minutes === 0 && time.seconds === 0;
 };
 
-// check this function logic again
+export const inputValid = ({
+	input,
+	max,
+}: {
+	input: string;
+	max?: number;
+}): boolean => {
+	const number = Number(input);
+
+	if (isNaN(number) || (max && number > max)) {
+		return false;
+	}
+
+	return true;
+};
+
 export const countTime = ({
 	time,
 	type,
@@ -35,8 +51,8 @@ export const countTime = ({
 		}
 	} else if (type === CLOCK_TYPES.TIMER) {
 		// Reset and init case
-		if (timerFinished(time)) {
-			return initTime;
+		if (timerZero(time)) {
+			return inits.zeroTime;
 		} else {
 			time.seconds -= 1;
 		}

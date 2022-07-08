@@ -13,7 +13,7 @@ const useRotateAnimation = ({
 	reset,
 }: {
 	play: boolean;
-	reset: boolean;
+	reset: number;
 }) => {
 	const animPaused = useSharedValue(true);
 	const animRotation = useSharedValue(0);
@@ -56,7 +56,7 @@ const useRotateAnimation = ({
 	}, [play]);
 
 	useEffect(() => {
-		if (reset) {
+		if (reset > 0) {
 			resetAnimation();
 		}
 	}, [reset]);
