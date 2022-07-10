@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import {
 	useSharedValue,
 	withTiming,
@@ -22,6 +22,7 @@ const useClockAnimation = ({
 	length: number;
 	duration: number;
 }) => {
+	const [started, setStarted] = useState(false);
 	const animPaused = useSharedValue(true);
 	const animStroke = useSharedValue(
 		type === CLOCK_TYPES.STOPWATCH ? length : 0
@@ -32,7 +33,7 @@ const useClockAnimation = ({
 		};
 	}, [animStroke.value]);
 
-	const initAnimation = () => {
+	const startAnimation = () => {
 		animStroke.value = withPause(
 			withRepeat(
 				withTiming(type === CLOCK_TYPES.STOPWATCH ? 0 : length, {
@@ -56,15 +57,17 @@ const useClockAnimation = ({
 	};
 
 	useEffect(() => {
-		if (play) {
-			initAnimation();
-		}
 		animPaused.value = !play;
+		if (play && !started) {
+			startAnimation();
+			setStarted(true);
+		}
 	}, [play]);
 
 	useEffect(() => {
 		if (reset > 0) {
 			resetAnimation();
+			setStarted(false);
 		}
 	}, [reset]);
 

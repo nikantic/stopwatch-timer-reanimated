@@ -3,15 +3,11 @@
 ...
 
 - Dont update react native svg to 12.3.0 - breaks web animation for circle: https://github.com/marcuzgabriel/reanimated-animation-library/pull/3
-- this version works fine - "react-native-svg": "^12.2.0",
-
-Fixed:
-
-- Android crash on reset
-- Big clock animation out of sync for some reason
+- this version works fine - "react-native-svg": "12.2.0",
 
 To do:
 
+- Change Count to Reanimated (miliseconds)
 - Stopwatch: SavedTimes screen (Flatlist)
 - Navigation
 - Deploy app
@@ -19,8 +15,8 @@ To do:
 
 To fix:
 
-- Tap on Timer clock should also opens modal
-- Modal should close on tap outside
+- [Android] - Stopwatch full circle bug
+- Stopwatch makes no sense without miliseconds
 - Limit clock to the width of device
 - Web styling fixes
 - Different Colors for stopwatch and timer

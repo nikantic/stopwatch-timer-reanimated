@@ -24,7 +24,7 @@ export default function Clock({
 				<BigClock
 					type={type}
 					duration={
-						type === CLOCK_TYPES.STOPWATCH
+						type === inits.stopwatchDuration
 							? 60000
 							: timeToMiliseconds(timer ? timer : inits.timerTime)
 					}

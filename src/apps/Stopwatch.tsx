@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { StyleSheet, View } from "react-native";
 
-import { IControls, CLOCK_TYPES } from "../config/types";
+import { IControls, CLOCK_TYPES, ITime } from "../config/types";
 import ActionBar from "../Partials/ActionBar";
 import Clock from "../Partials/Clock";
 import AppContext from "../config/context";
@@ -9,11 +9,14 @@ import AppContext from "../config/context";
 export default function Stopwatch() {
 	const [play, setPlay] = useState(false);
 	const [reset, setReset] = useState(0);
+	const [saved, setSaved] = useState([] as ITime[]);
 	const handleReset = () => setReset((reset) => reset + 1);
 
 	const controls: IControls = {
 		play: () => setPlay((play) => !play),
-		new: () => handleReset(),
+		new: (newTime: ITime) => {
+			setSaved([newTime, ...saved]);
+		},
 		reset: () => {
 			setPlay(false);
 			handleReset();

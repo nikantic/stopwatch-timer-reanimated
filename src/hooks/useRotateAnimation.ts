@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import {
 	useAnimatedStyle,
 	useSharedValue,
@@ -15,6 +15,7 @@ const useRotateAnimation = ({
 	play: boolean;
 	reset: number;
 }) => {
+	const [started, setStarted] = useState(false);
 	const animPaused = useSharedValue(true);
 	const animRotation = useSharedValue(0);
 
@@ -28,7 +29,7 @@ const useRotateAnimation = ({
 		};
 	}, [animRotation.value]);
 
-	const initAnimation = () => {
+	const startAnimation = () => {
 		animRotation.value = withPause(
 			withRepeat(
 				withTiming(360, {
@@ -49,15 +50,17 @@ const useRotateAnimation = ({
 	};
 
 	useEffect(() => {
-		if (play) {
-			initAnimation();
-		}
 		animPaused.value = !play;
+		if (play && !started) {
+			startAnimation();
+			setStarted(true);
+		}
 	}, [play]);
 
 	useEffect(() => {
 		if (reset > 0) {
 			resetAnimation();
+			setStarted(false);
 		}
 	}, [reset]);
 

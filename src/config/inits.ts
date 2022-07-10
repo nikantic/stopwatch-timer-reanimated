@@ -1,5 +1,5 @@
 export const inits = {
-	stopwatchDuration: 60000,
+	stopwatchDuration: 5000, // for testing
 	timerTime: {
 		hours: 0,
 		minutes: 0,

@@ -26,7 +26,7 @@ export interface ITime {
 export interface IControls {
 	play: () => void;
 	reset: () => void;
-	new?: () => void;
+	new?: (newTime: ITime) => void;
 	edit?: (newTime: ITime) => void;
 	openModal?: (open: boolean) => void;
 }
@@ -34,6 +34,7 @@ export interface IControls {
 export interface IContext {
 	play: boolean;
 	reset: number;
+	saved?: ITime[];
 	controls: IControls;
 }
 

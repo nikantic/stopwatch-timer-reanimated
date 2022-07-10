@@ -35,6 +35,16 @@ export default function BigClock({
 	return (
 		<View>
 			<Svg width={size} height={size} style={styles.svg}>
+				<Circle
+					cx={size / 2}
+					cy={size / 2}
+					r={circleConfig.radius}
+					stroke={COLORS.GRAY}
+					fill="none"
+					strokeWidth={0.5}
+					strokeLinecap="round"
+					strokeDasharray={6}
+				/>
 				<AnimatedCircle
 					animatedProps={clockAnimation.animProps}
 					cx={size / 2}
