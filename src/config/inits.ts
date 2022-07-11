@@ -1,15 +1,7 @@
 export const inits = {
-	stopwatchDuration: 5000, // for testing
-	timerTime: {
-		hours: 0,
-		minutes: 0,
-		seconds: 10,
-	},
-	zeroTime: {
-		hours: 0,
-		minutes: 0,
-		seconds: 0,
-	},
+	stopwatchCircleDuration: 5000, // for testing - revert to 60000
+	stopwatchDuration: 3.6e6,
+	timerDuration: 10000,
 	context: {
 		play: false,
 		reset: 0,

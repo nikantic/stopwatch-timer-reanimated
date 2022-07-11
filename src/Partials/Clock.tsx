@@ -4,19 +4,18 @@ import { View, StyleSheet, ViewStyle } from "react-native";
 import Counter from "../components/Counter";
 import BigClock from "../components/BigClock";
 import SmallClock from "../components/SmallClock";
-import { CLOCK_TYPES, ITime } from "../config/types";
-import { timeToMiliseconds } from "../helpers/helpers";
+import { CLOCK_TYPES } from "../config/types";
 import inits from "../config/inits";
 
 export default function Clock({
-	type,
 	style,
 	timer,
 }: {
-	type: CLOCK_TYPES;
 	style?: ViewStyle;
-	timer?: ITime;
+	timer?: number;
 }) {
+	const type = timer ? CLOCK_TYPES.TIMER : CLOCK_TYPES.STOPWATCH;
+
 	return (
 		<View style={[styles.container, style]}>
 			<Counter style={styles.counter} timer={timer} />
@@ -24,13 +23,11 @@ export default function Clock({
 				<BigClock
 					type={type}
 					duration={
-						type === inits.stopwatchDuration
-							? 60000
-							: timeToMiliseconds(timer ? timer : inits.timerTime)
+						timer ? timer || inits.timerDuration : inits.stopwatchCircleDuration
 					}
 				/>
 				<View style={styles.smallClock}>
-					<SmallClock />
+					<SmallClock type={type} />
 				</View>
 			</View>
 		</View>

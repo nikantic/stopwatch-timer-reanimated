@@ -17,7 +17,7 @@ export enum CLOCK_TYPES {
 	TIMER,
 }
 
-export interface ITime {
+export interface ITimerInput {
 	hours: number;
 	minutes: number;
 	seconds: number;
@@ -26,28 +26,17 @@ export interface ITime {
 export interface IControls {
 	play: () => void;
 	reset: () => void;
-	new?: (newTime: ITime) => void;
-	edit?: (newTime: ITime) => void;
+	new?: () => void;
+	edit?: (newTime: number) => void;
 	openModal?: (open: boolean) => void;
 }
 
 export interface IContext {
 	play: boolean;
 	reset: number;
-	saved?: ITime[];
+	saved?: number[];
+	elapsed?: {
+		current: number;
+	};
 	controls: IControls;
-}
-
-export class INTERVAL {
-	private intervalRate = 1000;
-	private interval = 0;
-
-	public startInterval(callback: Function) {
-		this.clearInterval();
-		this.interval = window.setInterval(callback, this.intervalRate);
-	}
-
-	public clearInterval() {
-		window.clearInterval(this.interval);
-	}
 }

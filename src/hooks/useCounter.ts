@@ -1,32 +1,66 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 
-import { CLOCK_TYPES, INTERVAL, ITime } from "../config/types";
 import inits from "../config/inits";
-import { countTime } from "../helpers/helpers";
+import {
+	cancelAnimation,
+	Easing,
+	runOnJS,
+	useDerivedValue,
+	useSharedValue,
+	withRepeat,
+	withTiming,
+} from "react-native-reanimated";
+import { withPause } from "react-native-redash";
 
-const useCounter = ({ timer }: { timer?: ITime }) => {
-	const [time, setTime] = useState(timer ? timer : inits.zeroTime);
-	const updateTime = () =>
-		setTime((time) =>
-			countTime({
-				time: { ...time },
-				type: timer ? CLOCK_TYPES.TIMER : CLOCK_TYPES.STOPWATCH,
-			})
+const useCounter = ({ timer }: { timer?: number }) => {
+	const duration = timer ? timer : inits.stopwatchDuration;
+
+	const [value, setValue] = useState(timer ? duration : 0);
+	const [started, setStarted] = useState(false);
+
+	const animCounter = useSharedValue(timer ? duration : 0);
+	const animPaused = useSharedValue(true);
+
+	const updateValue = (val: number) => setValue(val);
+
+	useDerivedValue(() => {
+		runOnJS(updateValue)(animCounter.value);
+	});
+
+	const startAnimation = () => {
+		animCounter.value = withPause(
+			withRepeat(
+				withTiming(timer ? 0 : duration, {
+					duration,
+					easing: Easing.linear,
+				}),
+				timer ? 1 : -1
+			),
+			animPaused
 		);
+	};
 
-	const timeInterval = useRef(new INTERVAL());
 	const controls = {
-		start: () => timeInterval.current.startInterval(updateTime),
-		stop: () => timeInterval.current.clearInterval(),
-		reset: () => setTime(timer ? timer : inits.zeroTime),
+		play: (play: boolean) => {
+			animPaused.value = !play;
+			if (play && !started) {
+				startAnimation();
+				setStarted(true);
+			}
+		},
+		reset: () => {
+			cancelAnimation(animCounter);
+			setStarted(false);
+			animCounter.value = timer ? duration : 0;
+		},
 	};
 
 	useEffect(() => {
-		return () => controls.stop();
+		return () => cancelAnimation(animCounter);
 	}, []);
 
 	return {
-		time,
+		value,
 		controls,
 	};
 };

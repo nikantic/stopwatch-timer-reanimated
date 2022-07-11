@@ -34,7 +34,7 @@ export default function ActionBar({ style }: { style?: ViewStyle }) {
 					icon={ICONS.ADD}
 					color={COLORS.BLACK}
 					size={50}
-					onPress={controls.new}
+					onPress={() => controls.new && controls.new()}
 				/>
 			)}
 			{controls.edit && (

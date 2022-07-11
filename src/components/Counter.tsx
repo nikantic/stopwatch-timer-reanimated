@@ -2,22 +2,25 @@ import React, { useContext, useEffect } from "react";
 import { View, ViewStyle, Alert } from "react-native";
 
 import useCounter from "../hooks/useCounter";
-import { timerZero } from "../helpers/helpers";
-import { ITime } from "../config/types";
 import AppContext from "../config/context";
 import CounterFormat from "./CounterFormat";
+import { CLOCK_TYPES } from "../config/types";
 
 export default function Counter({
 	style,
 	timer,
 }: {
 	style?: ViewStyle;
-	timer?: ITime;
+	timer?: number;
 }) {
-	const { play, reset, controls } = useContext(AppContext);
+	const { play, reset, elapsed, controls } = useContext(AppContext);
 	const counter = useCounter({ timer });
 
-	if (play && timer && timerZero(counter.time)) {
+	if (play && elapsed) {
+		elapsed.current = counter.value;
+	}
+
+	if (timer && play && counter.value === 0) {
 		setTimeout(() => {
 			controls.reset();
 			Alert.alert("Finished", "Time has finished running");
@@ -25,7 +28,7 @@ export default function Counter({
 	}
 
 	useEffect(() => {
-		play ? counter.controls.start() : counter.controls.stop();
+		play ? counter.controls.play(true) : counter.controls.play(false);
 	}, [play]);
 
 	useEffect(() => {
@@ -36,7 +39,10 @@ export default function Counter({
 
 	return (
 		<View style={style}>
-			<CounterFormat time={counter.time} />
+			<CounterFormat
+				type={timer ? CLOCK_TYPES.TIMER : CLOCK_TYPES.STOPWATCH}
+				time={counter.value}
+			/>
 		</View>
 	);
 }

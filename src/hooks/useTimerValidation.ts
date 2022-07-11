@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
 
-import { ITime } from "../config/types";
-import { timerZero } from "../helpers/helpers";
+import { ITimerInput } from "../config/types";
 
-export const useTimeValidation = ({ timer }: { timer: ITime }) => {
+export const useTimerValidation = ({ timer }: { timer: ITimerInput }) => {
 	const [time, setTime] = useState(timer);
 	const [valid, setValid] = useState(true);
 
@@ -20,7 +19,9 @@ export const useTimeValidation = ({ timer }: { timer: ITime }) => {
 	};
 
 	useEffect(() => {
-		setValid(!timerZero(time));
+		const timeZero =
+			time.hours === 0 && time.minutes === 0 && time.seconds === 0;
+		setValid(!timeZero);
 	}, [time]);
 
 	return {

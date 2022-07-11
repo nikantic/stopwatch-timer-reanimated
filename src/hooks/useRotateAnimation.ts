@@ -7,13 +7,16 @@ import {
 	Easing,
 } from "react-native-reanimated";
 import { withPause } from "react-native-redash";
+import { CLOCK_TYPES } from "../config/types";
 
 const useRotateAnimation = ({
 	play,
 	reset,
+	type,
 }: {
 	play: boolean;
 	reset: number;
+	type: CLOCK_TYPES;
 }) => {
 	const [started, setStarted] = useState(false);
 	const animPaused = useSharedValue(true);
@@ -32,7 +35,7 @@ const useRotateAnimation = ({
 	const startAnimation = () => {
 		animRotation.value = withPause(
 			withRepeat(
-				withTiming(360, {
+				withTiming(type === CLOCK_TYPES.STOPWATCH ? 360 : -360, {
 					duration: 1000,
 					easing: Easing.linear,
 				}),

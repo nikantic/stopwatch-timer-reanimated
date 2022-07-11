@@ -6,12 +6,15 @@ import Button from "../components/Button";
 import TimeInput from "../components/TimeInput";
 import COLORS from "../config/colors";
 import AppContext from "../config/context";
-import { BUTTON_TYPES, ITime } from "../config/types";
-import { useTimeValidation } from "../hooks/useTimeValidation";
+import { BUTTON_TYPES } from "../config/types";
+import { useTimerValidation } from "../hooks/useTimerValidation";
+import { timerToMiliseconds, timeToTimerFormat } from "../helpers/helpers";
 
-export default function TimerEdit({ timer }: { timer: ITime }) {
+export default function TimerEdit({ timer }: { timer: number }) {
 	const { controls } = useContext(AppContext);
-	const timeValidation = useTimeValidation({ timer });
+	const timeValidation = useTimerValidation({
+		timer: timeToTimerFormat(timer),
+	});
 
 	return (
 		<View style={styles.container}>
@@ -49,7 +52,10 @@ export default function TimerEdit({ timer }: { timer: ITime }) {
 						type={BUTTON_TYPES.TEXT}
 						color={COLORS.MAIN}
 						size={50}
-						onPress={() => controls.edit && controls.edit(timeValidation.time)}
+						onPress={() =>
+							controls.edit &&
+							controls.edit(timerToMiliseconds(timeValidation.time))
+						}
 						text="Save"
 						disabled={!timeValidation.valid}
 					/>
