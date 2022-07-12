@@ -6,12 +6,13 @@ import {
 } from "react-native-reanimated";
 
 import COLORS from "../config/colors";
+import { COLOR_TYPES } from "../config/types";
 
 const useButtonAnimation = ({
 	color,
 	maxScale = 1.3,
 }: {
-	color: COLORS;
+	color: COLOR_TYPES;
 	maxScale?: number;
 }) => {
 	const animConfig = {

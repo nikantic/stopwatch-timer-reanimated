@@ -13,10 +13,9 @@ To do:
 
 To fix:
 
-- Limit clock to the width of device
 - Web styling fixes
-- Different Colors for stopwatch and timer
 
 Future:
 
 - Localization and single labels file
+- Notification when Timer runs out

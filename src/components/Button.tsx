@@ -4,7 +4,7 @@ import { Feather } from "@expo/vector-icons";
 import Animated from "react-native-reanimated";
 
 import COLORS from "../config/colors";
-import { ICONS, BUTTON_TYPES } from "../config/types";
+import { ICONS, BUTTON_TYPES, COLOR_TYPES } from "../config/types";
 import useButtonAnimation from "../hooks/useButtonAnimation";
 import useButtonDefaults from "../hooks/useButtonDefaults";
 
@@ -25,7 +25,7 @@ export default function Button({
 	secondIconState?: boolean;
 	size?: number;
 	text?: string;
-	color?: COLORS;
+	color?: COLOR_TYPES;
 	onPress: () => void;
 	disabled?: boolean;
 }) {

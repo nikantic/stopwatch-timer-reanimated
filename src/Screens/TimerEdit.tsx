@@ -41,7 +41,7 @@ export default function TimerEdit({ timer }: { timer: number }) {
 				<View style={styles.button}>
 					<Button
 						type={BUTTON_TYPES.TEXT}
-						color={COLORS.TRANSPARENT}
+						color={COLORS.BLACK}
 						size={50}
 						onPress={() => controls.openModal && controls.openModal(false)}
 						text="Cancel"

@@ -1,13 +1,14 @@
 import { useState } from "react";
 import { StyleSheet, View } from "react-native";
 
-import { IControls } from "../config/types";
+import { COLOR_TYPES, IControls } from "../config/types";
 import ActionBar from "../Partials/ActionBar";
 import Clock from "../Partials/Clock";
 import AppContext from "../config/context";
 import ModalWrapper from "../components/ModalWrapper";
 import TimerEdit from "../Screens/TimerEdit";
 import inits from "../config/inits";
+import COLORS from "../config/colors";
 
 export default function Timer() {
 	const [play, setPlay] = useState(false);
@@ -15,6 +16,8 @@ export default function Timer() {
 	const [timer, setTimer] = useState(inits.timerDuration);
 	const [modalOpen, setModalOpen] = useState(false);
 	const handleReset = () => setReset((reset) => reset + 1);
+
+	COLORS.MAIN = COLOR_TYPES.RED;
 
 	const controls: IControls = {
 		play: () => setPlay((play) => !play),
@@ -52,8 +55,9 @@ const styles = StyleSheet.create({
 	},
 	actionBar: {
 		flex: 1,
+		marginBottom: 100,
 	},
 	clock: {
-		flex: 2,
+		flex: 4,
 	},
 });

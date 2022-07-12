@@ -10,7 +10,7 @@ import {
 } from "react-native-reanimated";
 import { withPause } from "react-native-redash";
 import COLORS from "../config/colors";
-import { CLOCK_TYPES } from "../config/types";
+import { CLOCK_TYPES, COLOR_TYPES } from "../config/types";
 
 const useClockAnimation = ({
 	type,
@@ -23,7 +23,7 @@ const useClockAnimation = ({
 	type: CLOCK_TYPES;
 	play: boolean;
 	reset: number;
-	color: COLORS;
+	color: COLOR_TYPES;
 	length: number;
 	duration: number;
 }) => {

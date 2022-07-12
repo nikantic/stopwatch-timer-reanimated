@@ -4,7 +4,7 @@ import Svg, { Ellipse, Line } from "react-native-svg";
 
 import COLORS from "../config/colors";
 import AppContext from "../config/context";
-import { CLOCK_TYPES } from "../config/types";
+import { CLOCK_TYPES, COLOR_TYPES } from "../config/types";
 import useRotateAnimation from "../hooks/useRotateAnimation";
 
 export default function SmallClock({
@@ -13,7 +13,7 @@ export default function SmallClock({
 	strokeWidth = 3,
 	type,
 }: {
-	bgColor?: COLORS;
+	bgColor?: COLOR_TYPES;
 	size?: number;
 	strokeWidth?: number;
 	type: CLOCK_TYPES;

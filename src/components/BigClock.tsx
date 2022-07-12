@@ -5,7 +5,7 @@ import Svg, { Circle } from "react-native-svg";
 
 import COLORS from "../config/colors";
 import AppContext from "../config/context";
-import { CLOCK_TYPES } from "../config/types";
+import { CLOCK_TYPES, COLOR_TYPES } from "../config/types";
 import useCircle from "../hooks/useCircle";
 import useClockAnimation from "../hooks/useClockAnimation";
 
@@ -20,7 +20,7 @@ export default function BigClock({
 	type: CLOCK_TYPES;
 	duration: number;
 	size?: number;
-	color?: COLORS;
+	color?: COLOR_TYPES;
 }) {
 	const { play, reset, saved } = useContext(AppContext);
 	const circleConfig = useCircle({ size });

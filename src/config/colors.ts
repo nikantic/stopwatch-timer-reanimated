@@ -1,13 +1,12 @@
-enum COLORS {
-	WHITE = "#fff",
-	BLACK = "#000",
-	MAIN = "#9c27b0",
-	INACTIVE = "#232323",
-	BLUE = "#3f51b5",
-	RED = "#e91e63",
-	DARK = "#111",
-	GRAY = "#ccc",
-	TRANSPARENT = "transparent",
-}
+import { COLOR_TYPES } from "./types";
+
+const COLORS = {
+	WHITE: COLOR_TYPES.WHITE,
+	BLACK: COLOR_TYPES.BLACK,
+	MAIN: COLOR_TYPES.MAIN,
+	INACTIVE: COLOR_TYPES.INACTIVE,
+	DARK: COLOR_TYPES.DARK,
+	GRAY: COLOR_TYPES.GRAY,
+};
 
 export default COLORS;

@@ -7,8 +7,8 @@ import Timer from "./src/apps/Timer";
 export default function App() {
 	return (
 		<View style={styles.container}>
-			<Stopwatch />
-			{/* <Timer /> */}
+			{/* <Stopwatch /> */}
+			<Timer />
 		</View>
 	);
 }

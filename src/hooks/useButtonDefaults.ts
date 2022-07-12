@@ -1,10 +1,10 @@
 import { StyleSheet, TextStyle, ViewStyle } from "react-native";
-import { BUTTON_TYPES } from "../config/types";
+import { BUTTON_TYPES, COLOR_TYPES } from "../config/types";
 import COLORS from "../config/colors";
 
 type IButtonDefaults = {
 	iconSize?: number;
-	iconColor?: COLORS;
+	iconColor?: COLOR_TYPES;
 	maxScale?: number;
 	styles?: ViewStyle;
 	textStyles?: TextStyle;
