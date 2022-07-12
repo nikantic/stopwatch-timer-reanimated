@@ -65,12 +65,14 @@ const styles = StyleSheet.create({
 	},
 	actionBar: {
 		flex: 1,
+		marginBottom: 100,
 	},
 	clock: {
-		flex: 2,
+		flex: 4,
 	},
 	resultsButton: {
 		elevation: 2,
 		zIndex: 2,
+		marginBottom: 70,
 	},
 });
