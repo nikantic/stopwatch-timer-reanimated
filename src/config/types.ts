@@ -20,9 +20,9 @@ export enum CLOCK_TYPES {
 export enum COLOR_TYPES {
 	WHITE = "#fff",
 	BLACK = "#000",
-	MAIN = "#9c27b0",
+	PRIMARY = "#9c27b0",
+	SECONDARY = "#e91e63",
 	INACTIVE = "#232323",
-	RED = "#e91e63",
 	DARK = "#111",
 	GRAY = "#ccc",
 }

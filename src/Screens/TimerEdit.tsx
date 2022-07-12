@@ -50,7 +50,7 @@ export default function TimerEdit({ timer }: { timer: number }) {
 				<View style={styles.button}>
 					<Button
 						type={BUTTON_TYPES.TEXT}
-						color={COLORS.MAIN}
+						color={COLORS.PRIMARY}
 						size={50}
 						onPress={() =>
 							controls.edit &&

@@ -22,7 +22,7 @@ export default function ActionBar({ style }: { style?: ViewStyle }) {
 				<Button
 					type={BUTTON_TYPES.CIRCLE}
 					icon={ICONS.PLAY}
-					color={COLORS.MAIN}
+					color={COLORS.PRIMARY}
 					secondIcon={ICONS.PAUSE}
 					secondIconState={play}
 					size={90}

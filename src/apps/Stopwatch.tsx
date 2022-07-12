@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
 import { StyleSheet, View } from "react-native";
 
-import { BUTTON_TYPES, IControls } from "../config/types";
+import { BUTTON_TYPES, COLOR_TYPES, IControls } from "../config/types";
 import ActionBar from "../Partials/ActionBar";
 import Clock from "../Partials/Clock";
 import AppContext from "../config/context";
@@ -17,6 +17,8 @@ export default function Stopwatch() {
 	const [modalOpen, setModalOpen] = useState(false);
 	const elapsed = useRef(0);
 	const handleReset = () => setReset((reset) => reset + 1);
+
+	COLORS.PRIMARY = COLOR_TYPES.PRIMARY;
 
 	const controls: IControls = {
 		play: () => setPlay((play) => !play),
@@ -40,17 +42,19 @@ export default function Stopwatch() {
 		<AppContext.Provider value={{ play, reset, elapsed, saved, controls }}>
 			<View style={styles.container}>
 				<Clock style={styles.clock} />
-				<View style={styles.resultsButton}>
-					<Button
-						type={BUTTON_TYPES.TEXT}
-						color={COLORS.MAIN}
-						size={80}
-						onPress={() => controls.openModal && controls.openModal(true)}
-						text={`Results (${saved.length})`}
-						disabled={!saved.length}
-					/>
+				<View style={styles.bottomGroup}>
+					<View style={styles.resultsButton}>
+						<Button
+							type={BUTTON_TYPES.TEXT}
+							color={COLORS.PRIMARY}
+							size={80}
+							onPress={() => controls.openModal && controls.openModal(true)}
+							text={`Results (${saved.length})`}
+							disabled={!saved.length}
+						/>
+					</View>
+					<ActionBar style={styles.actionBar} />
 				</View>
-				<ActionBar style={styles.actionBar} />
 				<ModalWrapper heading="Results" open={modalOpen}>
 					<Results />
 				</ModalWrapper>
@@ -64,15 +68,20 @@ const styles = StyleSheet.create({
 		flex: 1,
 	},
 	actionBar: {
-		flex: 1,
-		marginBottom: 100,
+		flex: 0,
 	},
 	clock: {
-		flex: 4,
+		flex: 2,
+	},
+	bottomGroup: {
+		flex: 1,
+		alignItems: "center",
+		justifyContent: "center",
 	},
 	resultsButton: {
+		position: "absolute",
+		top: -30,
 		elevation: 2,
 		zIndex: 2,
-		marginBottom: 70,
 	},
 });

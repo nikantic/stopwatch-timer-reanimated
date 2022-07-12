@@ -23,7 +23,7 @@ export default function Counter({
 	if (timer && play && counter.value === 0) {
 		setTimeout(() => {
 			controls.reset();
-			Alert.alert("Finished", "Time has finished running");
+			// Alert.alert("Finished", "Time has finished running");
 		});
 	}
 

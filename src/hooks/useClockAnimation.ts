@@ -16,7 +16,7 @@ const useClockAnimation = ({
 	type,
 	play,
 	reset,
-	color = COLORS.MAIN,
+	color = COLORS.PRIMARY,
 	length,
 	duration,
 }: {

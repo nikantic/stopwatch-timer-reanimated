@@ -15,7 +15,7 @@ export default function BigClock({
 	type,
 	duration,
 	size = 300,
-	color = COLORS.MAIN,
+	color = COLORS.PRIMARY,
 }: {
 	type: CLOCK_TYPES;
 	duration: number;
@@ -33,7 +33,11 @@ export default function BigClock({
 		length: circleConfig.length,
 	});
 
-	useEffect(clockAnimation.colorAnimation, [saved]);
+	useEffect(() => {
+		if (saved && saved.length > 0) {
+			clockAnimation.colorAnimation();
+		}
+	}, [saved]);
 
 	return (
 		<View>

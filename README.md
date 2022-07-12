@@ -7,13 +7,8 @@
 
 To do:
 
-- Navigation
-- Deploy app
 - Test on iOS and Android simulators
-
-To fix:
-
-- Web styling fixes
+- Deploy app
 
 Future:
 

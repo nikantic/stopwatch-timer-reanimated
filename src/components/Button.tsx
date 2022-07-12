@@ -15,7 +15,7 @@ export default function Button({
 	size,
 	onPress,
 	text,
-	color = COLORS.MAIN,
+	color = COLORS.PRIMARY,
 	secondIconState,
 	disabled,
 }: {

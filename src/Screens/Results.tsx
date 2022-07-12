@@ -63,7 +63,7 @@ export default function Results() {
 				<View style={styles.button}>
 					<Button
 						type={BUTTON_TYPES.TEXT}
-						color={COLORS.MAIN}
+						color={COLORS.PRIMARY}
 						size={50}
 						onPress={() => setSorted((sorted) => !sorted)}
 						text="Sort"
@@ -125,7 +125,7 @@ const styles = StyleSheet.create({
 		paddingVertical: 5,
 	},
 	active: {
-		borderBottomColor: COLORS.MAIN,
+		borderBottomColor: COLORS.PRIMARY,
 		borderBottomWidth: 2,
 	},
 });
