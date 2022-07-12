@@ -1,5 +1,11 @@
 import React, { useContext, useState } from "react";
-import { View, StyleSheet, Text, FlatList } from "react-native";
+import {
+	View,
+	StyleSheet,
+	Text,
+	FlatList,
+	TouchableWithoutFeedback,
+} from "react-native";
 import Button from "../components/Button";
 
 import ResultsItem from "../components/ResultsItem";
@@ -14,26 +20,43 @@ export default function Results() {
 		saved &&
 		[...saved].map((item, index) => {
 			return {
-				start: index,
-				time: item,
+				position: index,
+				start: item,
+				time: index - 1 < 0 ? item : saved[index] - saved[index - 1],
 			};
 		});
-	const fastestSaved = [...normalSaved].sort((a, b) => a.time - b.time);
+	const fastestSaved =
+		normalSaved && [...normalSaved].sort((a, b) => a.time - b.time);
 
 	return (
 		<View style={styles.container}>
 			<View style={styles.tableGroup}>
 				<View style={styles.header}>
-					<Text style={[styles.headerItem, styles.position]}>Pos</Text>
-					<Text style={[styles.headerItem, styles.time]}>Start</Text>
+					<View style={styles.position}>
+						<Text style={styles.headerText}>Pos</Text>
+					</View>
+					<View style={[styles.time, !sorted && styles.active]}>
+						<TouchableWithoutFeedback onPress={() => setSorted(false)}>
+							<Text style={styles.headerText}>Start</Text>
+						</TouchableWithoutFeedback>
+					</View>
+					<View style={[styles.time, sorted && styles.active]}>
+						<TouchableWithoutFeedback onPress={() => setSorted(true)}>
+							<Text style={styles.headerText}>Time</Text>
+						</TouchableWithoutFeedback>
+					</View>
 				</View>
 				<FlatList
 					showsVerticalScrollIndicator={false}
 					data={sorted ? fastestSaved : normalSaved}
 					renderItem={({ item }) => (
-						<ResultsItem time={item.time} index={item.start} />
+						<ResultsItem
+							start={item.start}
+							time={item.time}
+							index={item.position}
+						/>
 					)}
-					keyExtractor={(item) => item.start.toString()}
+					keyExtractor={(item) => item.position.toString()}
 				/>
 			</View>
 			<View style={styles.buttonGroup}>
@@ -79,18 +102,30 @@ const styles = StyleSheet.create({
 	},
 	header: {
 		flexDirection: "row",
+		marginTop: 10,
 	},
-	headerItem: {
+	headerText: {
 		color: COLORS.GRAY,
-		paddingVertical: 10,
 		fontSize: 16,
 		textAlign: "center",
 		textTransform: "uppercase",
 	},
 	position: {
 		flex: 1,
+		borderWidth: 1,
+		width: 50,
+		paddingHorizontal: 7,
+		paddingVertical: 5,
 	},
 	time: {
 		flex: 2,
+		borderWidth: 1,
+		borderBottomWidth: 2,
+		paddingHorizontal: 7,
+		paddingVertical: 5,
+	},
+	active: {
+		borderBottomColor: COLORS.MAIN,
+		borderBottomWidth: 2,
 	},
 });

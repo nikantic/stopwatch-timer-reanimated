@@ -7,20 +7,15 @@
 
 To do:
 
-- Change Count to Reanimated (miliseconds)
-- Stopwatch: SavedTimes screen (Flatlist)
 - Navigation
 - Deploy app
 - Test on iOS and Android simulators
 
 To fix:
 
-- [Android] - Stopwatch full circle bug
-- Stopwatch makes no sense without miliseconds
 - Limit clock to the width of device
 - Web styling fixes
 - Different Colors for stopwatch and timer
-- Check Stopwatch Count function logic again
 
 Future:
 

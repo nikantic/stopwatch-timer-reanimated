@@ -5,17 +5,27 @@ import COLORS from "../config/colors";
 import { formatTime } from "../helpers/helpers";
 
 export default function ResultsItem({
+	start,
 	time,
 	index,
 }: {
+	start: number;
 	time: number;
 	index: number;
 }) {
+	const formattedStart = formatTime({ time: start });
 	const formattedTime = formatTime({ time });
 
 	return (
 		<View style={styles.container}>
 			<Text style={styles.position}>{index + 1}</Text>
+			<View style={styles.time}>
+				<Text style={styles.text}>{formattedStart.minutes}</Text>
+				<Text style={styles.label}>:</Text>
+				<Text style={styles.text}>{formattedStart.seconds}</Text>
+				<Text style={styles.label}>:</Text>
+				<Text style={styles.text}>{formattedStart.miliseconds}</Text>
+			</View>
 			<View style={styles.time}>
 				<Text style={styles.text}>{formattedTime.minutes}</Text>
 				<Text style={styles.label}>:</Text>
@@ -40,7 +50,7 @@ const styles = StyleSheet.create({
 		borderWidth: 1,
 		borderColor: COLORS.INACTIVE,
 		color: COLORS.WHITE,
-		fontSize: 20,
+		fontSize: 18,
 		padding: 7,
 		textAlign: "center",
 		width: 50,
@@ -56,11 +66,11 @@ const styles = StyleSheet.create({
 	},
 	text: {
 		color: COLORS.WHITE,
-		fontSize: 20,
+		fontSize: 18,
 	},
 	label: {
 		marginHorizontal: 2,
 		color: COLORS.GRAY,
-		fontSize: 20,
+		fontSize: 18,
 	},
 });
