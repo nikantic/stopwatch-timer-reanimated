@@ -37,22 +37,22 @@ export default function Stopwatch() {
 	};
 
 	return (
-		<AppContext.Provider value={{ play, reset, elapsed, controls }}>
+		<AppContext.Provider value={{ play, reset, elapsed, saved, controls }}>
 			<View style={styles.container}>
 				<Clock style={styles.clock} />
 				<View style={styles.resultsButton}>
 					<Button
 						type={BUTTON_TYPES.TEXT}
-						color={COLORS.BLUE}
-						size={50}
+						color={COLORS.MAIN}
+						size={80}
 						onPress={() => controls.openModal && controls.openModal(true)}
-						text="Results"
+						text={`Results (${saved.length})`}
 						disabled={!saved.length}
 					/>
 				</View>
 				<ActionBar style={styles.actionBar} />
 				<ModalWrapper heading="Results" open={modalOpen}>
-					<Results saved={saved} />
+					<Results />
 				</ModalWrapper>
 			</View>
 		</AppContext.Provider>

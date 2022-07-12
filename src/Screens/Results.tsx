@@ -7,15 +7,17 @@ import COLORS from "../config/colors";
 import AppContext from "../config/context";
 import { BUTTON_TYPES } from "../config/types";
 
-export default function Results({ saved }: { saved: number[] }) {
-	const { controls } = useContext(AppContext);
+export default function Results() {
+	const { saved, controls } = useContext(AppContext);
 	const [sorted, setSorted] = useState(false);
-	const normalSaved = [...saved].map((item, index) => {
-		return {
-			start: index,
-			time: item,
-		};
-	});
+	const normalSaved =
+		saved &&
+		[...saved].map((item, index) => {
+			return {
+				start: index,
+				time: item,
+			};
+		});
 	const fastestSaved = [...normalSaved].sort((a, b) => a.time - b.time);
 
 	return (

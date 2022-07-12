@@ -50,6 +50,7 @@ const useButtonDefaults = ({
 		[BUTTON_TYPES.TEXT]: {
 			width: size + 70,
 			height: size,
+			maxHeight: 50,
 			borderRadius: size,
 		},
 	});

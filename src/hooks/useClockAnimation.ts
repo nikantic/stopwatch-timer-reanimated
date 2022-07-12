@@ -5,31 +5,38 @@ import {
 	withRepeat,
 	Easing,
 	useAnimatedProps,
+	interpolateColor,
+	withSequence,
 } from "react-native-reanimated";
 import { withPause } from "react-native-redash";
+import COLORS from "../config/colors";
 import { CLOCK_TYPES } from "../config/types";
 
 const useClockAnimation = ({
 	type,
 	play,
 	reset,
+	color = COLORS.MAIN,
 	length,
 	duration,
 }: {
 	type: CLOCK_TYPES;
 	play: boolean;
 	reset: number;
+	color: COLORS;
 	length: number;
 	duration: number;
 }) => {
 	const [started, setStarted] = useState(false);
 	const animPaused = useSharedValue(true);
+	const animColor = useSharedValue(0);
 	const animStroke = useSharedValue(
 		type === CLOCK_TYPES.STOPWATCH ? length : 0
 	);
 	const animProps = useAnimatedProps(() => {
 		return {
 			strokeDashoffset: animStroke.value,
+			stroke: interpolateColor(animColor.value, [0, 1], [color, COLORS.WHITE]),
 		};
 	}, [animStroke.value]);
 
@@ -56,6 +63,17 @@ const useClockAnimation = ({
 		);
 	};
 
+	const colorAnimation = () => {
+		animColor.value = withSequence(
+			withTiming(1, {
+				duration: 100,
+			}),
+			withTiming(0, {
+				duration: 200,
+			})
+		);
+	};
+
 	useEffect(() => {
 		animPaused.value = !play;
 		if (play && !started) {
@@ -73,6 +91,7 @@ const useClockAnimation = ({
 
 	return {
 		animProps,
+		colorAnimation,
 	};
 };
 

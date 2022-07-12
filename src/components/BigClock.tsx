@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { StyleSheet, View } from "react-native";
 import Animated from "react-native-reanimated";
 import Svg, { Circle } from "react-native-svg";
@@ -22,15 +22,18 @@ export default function BigClock({
 	size?: number;
 	color?: COLORS;
 }) {
-	const { play, reset } = useContext(AppContext);
+	const { play, reset, saved } = useContext(AppContext);
 	const circleConfig = useCircle({ size });
 	const clockAnimation = useClockAnimation({
 		type,
 		play,
 		reset,
+		color,
 		duration,
 		length: circleConfig.length,
 	});
+
+	useEffect(clockAnimation.colorAnimation, [saved]);
 
 	return (
 		<View>
@@ -50,7 +53,6 @@ export default function BigClock({
 					cx={size / 2}
 					cy={size / 2}
 					r={circleConfig.radius}
-					stroke={color}
 					fill="none"
 					strokeWidth={10}
 					strokeLinecap="round"
