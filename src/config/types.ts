@@ -21,6 +21,7 @@ export interface ITimerInput {
 	hours: number;
 	minutes: number;
 	seconds: number;
+	miliseconds: number;
 }
 
 export interface IControls {

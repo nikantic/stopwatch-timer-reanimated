@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
 		position: "absolute",
 		width: "101%",
 		left: -1,
-		height: "60%",
+		height: "70%",
 		backgroundColor: COLORS.BLACK,
 		borderTopLeftRadius: 30,
 		borderTopEndRadius: 30,
@@ -55,5 +55,7 @@ const styles = StyleSheet.create({
 	},
 	childrenView: {
 		flex: 1,
+		width: "100%",
+		alignItems: "center",
 	},
 });

@@ -6,14 +6,14 @@ import Button from "../components/Button";
 import TimeInput from "../components/TimeInput";
 import COLORS from "../config/colors";
 import AppContext from "../config/context";
-import { BUTTON_TYPES } from "../config/types";
+import { BUTTON_TYPES, ITimerInput } from "../config/types";
 import { useTimerValidation } from "../hooks/useTimerValidation";
-import { timerToMiliseconds, timeToTimerFormat } from "../helpers/helpers";
+import { timerToMiliseconds, formatTime } from "../helpers/helpers";
 
 export default function TimerEdit({ timer }: { timer: number }) {
 	const { controls } = useContext(AppContext);
 	const timeValidation = useTimerValidation({
-		timer: timeToTimerFormat(timer),
+		timer: formatTime({ time: timer, formatted: false }) as ITimerInput,
 	});
 
 	return (

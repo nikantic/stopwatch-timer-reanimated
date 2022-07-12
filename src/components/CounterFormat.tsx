@@ -3,7 +3,7 @@ import { View, StyleSheet, Text } from "react-native";
 
 import COLORS from "../config/colors";
 import { CLOCK_TYPES } from "../config/types";
-import { formatNumber } from "../helpers/helpers";
+import { formatTime } from "../helpers/helpers";
 
 export default function CounterFormat({
 	time,
@@ -12,13 +12,7 @@ export default function CounterFormat({
 	time: number;
 	type: CLOCK_TYPES;
 }) {
-	const date = new Date(time);
-	const formattedTime = {
-		hours: formatNumber(date.getUTCHours()),
-		minutes: formatNumber(date.getUTCMinutes()),
-		seconds: formatNumber(date.getUTCSeconds()),
-		miliseconds: formatNumber(date.getUTCMilliseconds()).toString().slice(0, 2),
-	};
+	const formattedTime = formatTime({ time });
 
 	return (
 		<View style={styles.container}>

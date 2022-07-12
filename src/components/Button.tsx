@@ -62,7 +62,15 @@ export default function Button({
 				style={[buttonAnimation.animStyle, buttonDefaults.styles]}
 			/>
 			{type === BUTTON_TYPES.TEXT ? (
-				<Text style={[buttonDefaults.textStyles, styles.absolute]}>{text}</Text>
+				<Text
+					style={[
+						buttonDefaults.textStyles,
+						styles.absolute,
+						disabled && styles.disabledText,
+					]}
+				>
+					{text}
+				</Text>
 			) : (
 				<View style={styles.absolute}>
 					<Feather
@@ -88,5 +96,8 @@ const styles = StyleSheet.create({
 	},
 	playIcon: {
 		marginLeft: 5,
+	},
+	disabledText: {
+		opacity: 0.5,
 	},
 });
