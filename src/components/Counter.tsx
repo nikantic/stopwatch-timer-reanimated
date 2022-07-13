@@ -16,7 +16,7 @@ export default function Counter({
 	const { play, reset, elapsed, controls } = useContext(AppContext);
 	const counter = useCounter({ timer });
 
-	if (play && elapsed) {
+	if (elapsed) {
 		elapsed.current = counter.value;
 	}
 

@@ -1,10 +1,12 @@
 import { View, StyleSheet } from "react-native";
 import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import AppLoading from "expo-app-loading";
 
 import COLORS from "./src/config/colors";
 import Stopwatch from "./src/apps/Stopwatch";
 import Timer from "./src/apps/Timer";
+import useAppFonts from "./src/hooks/useAppFonts";
 
 const Tab = createBottomTabNavigator();
 
@@ -18,6 +20,12 @@ const myTheme = {
 };
 
 export default function App() {
+	const fonts = useAppFonts();
+
+	if (!fonts) {
+		return <AppLoading />;
+	}
+
 	return (
 		<View style={styles.container}>
 			<View style={styles.inner}>

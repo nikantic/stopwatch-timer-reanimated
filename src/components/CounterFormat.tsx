@@ -47,18 +47,16 @@ const styles = StyleSheet.create({
 	number: {
 		color: COLORS.WHITE,
 		fontSize: 27,
-		fontFamily: "monospace",
+		width: 34,
 	},
 	dot: {
 		color: COLORS.INACTIVE,
 		fontSize: 22,
-		fontFamily: "monospace",
 		marginHorizontal: 15,
 		alignSelf: "center",
 	},
 	label: {
 		color: COLORS.GRAY,
 		fontSize: 20,
-		fontFamily: "monospace",
 	},
 });

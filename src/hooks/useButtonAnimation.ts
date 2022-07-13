@@ -44,20 +44,20 @@ const useButtonAnimation = ({
 
 	const scaleIn = () => {
 		animScale.value = withSpring(animConfig.scale.to, {
-			stiffness: 300,
+			stiffness: 100,
+			mass: 1.2,
 		});
 	};
 
 	const scaleOut = () => {
 		animScale.value = withSpring(animConfig.scale.from, {
-			stiffness: 200,
+			stiffness: 100,
+			mass: 0.1,
 		});
 	};
 
 	const animateBgColor = (pressed: boolean) => {
-		animBgColor.value = withSpring(pressed ? 0 : 1, {
-			restSpeedThreshold: 200,
-		});
+		animBgColor.value = withSpring(pressed ? 0 : 1);
 	};
 
 	return {

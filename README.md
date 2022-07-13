@@ -14,3 +14,4 @@ Future:
 
 - Localization and single labels file
 - Notification when Timer runs out
+- Light / Dark theme

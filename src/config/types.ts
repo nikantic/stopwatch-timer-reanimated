@@ -27,6 +27,10 @@ export enum COLOR_TYPES {
 	GRAY = "#ccc",
 }
 
+export enum FONT_TYPES {
+	MONO = "ShareTechMono_400Regular",
+}
+
 export interface ITimerInput {
 	hours: number;
 	minutes: number;

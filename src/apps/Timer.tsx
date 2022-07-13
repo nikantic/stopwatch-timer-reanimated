@@ -2,11 +2,11 @@ import { useState } from "react";
 import { StyleSheet, View } from "react-native";
 
 import { IControls } from "../config/types";
-import ActionBar from "../Partials/ActionBar";
-import Clock from "../Partials/Clock";
+import ActionBar from "../partials/ActionBar";
+import Clock from "../partials/Clock";
 import AppContext from "../config/context";
 import ModalWrapper from "../components/ModalWrapper";
-import TimerEdit from "../Screens/TimerEdit";
+import TimerEdit from "../screens/TimerEdit";
 import inits from "../config/inits";
 import COLORS from "../config/colors";
 

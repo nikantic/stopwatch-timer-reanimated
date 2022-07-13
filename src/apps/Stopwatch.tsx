@@ -2,11 +2,11 @@ import { useRef, useState } from "react";
 import { StyleSheet, View } from "react-native";
 
 import { BUTTON_TYPES, COLOR_TYPES, IControls } from "../config/types";
-import ActionBar from "../Partials/ActionBar";
-import Clock from "../Partials/Clock";
+import ActionBar from "../partials/ActionBar";
+import Clock from "../partials/Clock";
 import AppContext from "../config/context";
 import ModalWrapper from "../components/ModalWrapper";
-import Results from "../Screens/Results";
+import Results from "../screens/Results";
 import Button from "../components/Button";
 import COLORS from "../config/colors";
 

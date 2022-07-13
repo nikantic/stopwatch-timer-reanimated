@@ -44,7 +44,7 @@ export default function TimerEdit({ timer }: { timer: number }) {
 						color={COLORS.BLACK}
 						size={50}
 						onPress={() => controls.openModal && controls.openModal(false)}
-						text="Cancel"
+						text="Close"
 					/>
 				</View>
 				<View style={styles.button}>
@@ -73,7 +73,6 @@ const styles = StyleSheet.create({
 	label: {
 		color: COLORS.GRAY,
 		fontSize: 20,
-		fontFamily: "monospace",
 	},
 	buttonGroup: {
 		flex: 1,

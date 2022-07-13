@@ -21,16 +21,16 @@ export default function ResultsItem({
 			<Text style={styles.position}>{index + 1}</Text>
 			<View style={styles.time}>
 				<Text style={styles.text}>{formattedStart.minutes}</Text>
-				<Text style={styles.label}>:</Text>
+				<Text style={styles.dot}>:</Text>
 				<Text style={styles.text}>{formattedStart.seconds}</Text>
-				<Text style={styles.label}>:</Text>
+				<Text style={styles.dot}>:</Text>
 				<Text style={styles.text}>{formattedStart.miliseconds}</Text>
 			</View>
 			<View style={styles.time}>
 				<Text style={styles.text}>{formattedTime.minutes}</Text>
-				<Text style={styles.label}>:</Text>
+				<Text style={styles.dot}>:</Text>
 				<Text style={styles.text}>{formattedTime.seconds}</Text>
-				<Text style={styles.label}>:</Text>
+				<Text style={styles.dot}>:</Text>
 				<Text style={styles.text}>{formattedTime.miliseconds}</Text>
 			</View>
 		</View>
@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
 		color: COLORS.WHITE,
 		fontSize: 18,
 	},
-	label: {
+	dot: {
 		marginHorizontal: 2,
 		color: COLORS.GRAY,
 		fontSize: 18,

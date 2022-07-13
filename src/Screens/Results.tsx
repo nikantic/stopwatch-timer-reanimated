@@ -1,11 +1,5 @@
 import React, { useContext, useState } from "react";
-import {
-	View,
-	StyleSheet,
-	Text,
-	FlatList,
-	TouchableWithoutFeedback,
-} from "react-native";
+import { View, StyleSheet, Text, FlatList, Pressable } from "react-native";
 import Button from "../components/Button";
 
 import ResultsItem from "../components/ResultsItem";
@@ -36,14 +30,14 @@ export default function Results() {
 						<Text style={styles.headerText}>Pos</Text>
 					</View>
 					<View style={[styles.time, !sorted && styles.active]}>
-						<TouchableWithoutFeedback onPress={() => setSorted(false)}>
+						<Pressable onPress={() => setSorted(false)}>
 							<Text style={styles.headerText}>Start</Text>
-						</TouchableWithoutFeedback>
+						</Pressable>
 					</View>
 					<View style={[styles.time, sorted && styles.active]}>
-						<TouchableWithoutFeedback onPress={() => setSorted(true)}>
+						<Pressable onPress={() => setSorted(true)}>
 							<Text style={styles.headerText}>Time</Text>
-						</TouchableWithoutFeedback>
+						</Pressable>
 					</View>
 				</View>
 				<FlatList
@@ -63,19 +57,19 @@ export default function Results() {
 				<View style={styles.button}>
 					<Button
 						type={BUTTON_TYPES.TEXT}
-						color={COLORS.PRIMARY}
+						color={COLORS.INACTIVE}
 						size={50}
-						onPress={() => setSorted((sorted) => !sorted)}
-						text="Sort"
+						onPress={() => controls.openModal && controls.openModal(false)}
+						text="Close"
 					/>
 				</View>
 				<View style={styles.button}>
 					<Button
 						type={BUTTON_TYPES.TEXT}
-						color={COLORS.INACTIVE}
+						color={COLORS.PRIMARY}
 						size={50}
-						onPress={() => controls.openModal && controls.openModal(false)}
-						text="Close"
+						onPress={() => setSorted((sorted) => !sorted)}
+						text="Sort"
 					/>
 				</View>
 			</View>
