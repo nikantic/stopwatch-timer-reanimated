@@ -44,15 +44,13 @@ const useButtonAnimation = ({
 
 	const scaleIn = () => {
 		animScale.value = withSpring(animConfig.scale.to, {
-			stiffness: 100,
-			mass: 1.2,
+			stiffness: 200,
 		});
 	};
 
 	const scaleOut = () => {
 		animScale.value = withSpring(animConfig.scale.from, {
-			stiffness: 100,
-			mass: 0.1,
+			stiffness: 300,
 		});
 	};
 

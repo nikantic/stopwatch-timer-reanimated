@@ -6,6 +6,7 @@ import ResultsItem from "../components/ResultsItem";
 import COLORS from "../config/colors";
 import AppContext from "../config/context";
 import { BUTTON_TYPES } from "../config/types";
+import GLOBAL_STYLES from "../styles/global";
 
 export default function Results() {
 	const { saved, controls } = useContext(AppContext);
@@ -15,7 +16,7 @@ export default function Results() {
 		[...saved].map((item, index) => {
 			return {
 				position: index,
-				start: item,
+				finish: item,
 				time: index - 1 < 0 ? item : saved[index] - saved[index - 1],
 			};
 		});
@@ -27,16 +28,18 @@ export default function Results() {
 			<View style={styles.tableGroup}>
 				<View style={styles.header}>
 					<View style={styles.position}>
-						<Text style={styles.headerText}>Pos</Text>
+						<Text style={[styles.headerText, GLOBAL_STYLES.text]}>Pos</Text>
 					</View>
 					<View style={[styles.time, !sorted && styles.active]}>
 						<Pressable onPress={() => setSorted(false)}>
-							<Text style={styles.headerText}>Start</Text>
+							<Text style={[styles.headerText, GLOBAL_STYLES.text]}>
+								Finish
+							</Text>
 						</Pressable>
 					</View>
 					<View style={[styles.time, sorted && styles.active]}>
 						<Pressable onPress={() => setSorted(true)}>
-							<Text style={styles.headerText}>Time</Text>
+							<Text style={[styles.headerText, GLOBAL_STYLES.text]}>Time</Text>
 						</Pressable>
 					</View>
 				</View>
@@ -45,7 +48,7 @@ export default function Results() {
 					data={sorted ? fastestSaved : normalSaved}
 					renderItem={({ item }) => (
 						<ResultsItem
-							start={item.start}
+							finish={item.finish}
 							time={item.time}
 							index={item.position}
 						/>

@@ -4,6 +4,7 @@ import { View, StyleSheet, Text } from "react-native";
 import COLORS from "../config/colors";
 import { CLOCK_TYPES } from "../config/types";
 import { formatTime } from "../helpers/helpers";
+import GLOBAL_STYLES from "../styles/global";
 
 export default function CounterFormat({
 	time,
@@ -18,21 +19,21 @@ export default function CounterFormat({
 		<View style={styles.container}>
 			{type === CLOCK_TYPES.TIMER && (
 				<>
-					<Text style={styles.number}>{formattedTime.hours}</Text>
-					<Text style={styles.label}>h</Text>
-					<Text style={styles.dot}>:</Text>
+					<Text style={[styles.number, GLOBAL_STYLES.text]}>{formattedTime.hours}</Text>
+					<Text style={[styles.label, GLOBAL_STYLES.text]}>h</Text>
+					<Text style={[styles.dot, GLOBAL_STYLES.text]}>:</Text>
 				</>
 			)}
-			<Text style={styles.number}>{formattedTime.minutes}</Text>
-			<Text style={styles.label}>m</Text>
-			<Text style={styles.dot}>:</Text>
-			<Text style={styles.number}>{formattedTime.seconds}</Text>
-			<Text style={styles.label}>s</Text>
+			<Text style={[styles.number, GLOBAL_STYLES.text]}>{formattedTime.minutes}</Text>
+			<Text style={[styles.label, GLOBAL_STYLES.text]}>m</Text>
+			<Text style={[styles.dot, GLOBAL_STYLES.text]}>:</Text>
+			<Text style={[styles.number, GLOBAL_STYLES.text]}>{formattedTime.seconds}</Text>
+			<Text style={[styles.label, GLOBAL_STYLES.text]}>s</Text>
 			{type === CLOCK_TYPES.STOPWATCH && (
 				<>
-					<Text style={styles.dot}>:</Text>
-					<Text style={styles.number}>{formattedTime.miliseconds}</Text>
-					<Text style={styles.label}>ms</Text>
+					<Text style={[styles.dot, GLOBAL_STYLES.text]}>:</Text>
+					<Text style={[styles.number, GLOBAL_STYLES.text]}>{formattedTime.miliseconds}</Text>
+					<Text style={[styles.label, GLOBAL_STYLES.text]}>ms</Text>
 				</>
 			)}
 		</View>

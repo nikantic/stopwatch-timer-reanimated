@@ -3,35 +3,48 @@ import { View, StyleSheet, Text } from "react-native";
 
 import COLORS from "../config/colors";
 import { formatTime } from "../helpers/helpers";
+import GLOBAL_STYLES from "../styles/global";
 
 export default function ResultsItem({
-	start,
+	finish,
 	time,
 	index,
 }: {
-	start: number;
+	finish: number;
 	time: number;
 	index: number;
 }) {
-	const formattedStart = formatTime({ time: start });
+	const formattedFinish = formatTime({ time: finish });
 	const formattedTime = formatTime({ time });
 
 	return (
 		<View style={styles.container}>
-			<Text style={styles.position}>{index + 1}</Text>
+			<Text style={[styles.position, GLOBAL_STYLES.text]}>{index + 1}</Text>
 			<View style={styles.time}>
-				<Text style={styles.text}>{formattedStart.minutes}</Text>
-				<Text style={styles.dot}>:</Text>
-				<Text style={styles.text}>{formattedStart.seconds}</Text>
-				<Text style={styles.dot}>:</Text>
-				<Text style={styles.text}>{formattedStart.miliseconds}</Text>
+				<Text style={[styles.text, GLOBAL_STYLES.text]}>
+					{formattedFinish.minutes}
+				</Text>
+				<Text style={[styles.dot, GLOBAL_STYLES.text]}>:</Text>
+				<Text style={[styles.text, GLOBAL_STYLES.text]}>
+					{formattedFinish.seconds}
+				</Text>
+				<Text style={[styles.dot, GLOBAL_STYLES.text]}>:</Text>
+				<Text style={[styles.text, GLOBAL_STYLES.text]}>
+					{formattedFinish.miliseconds}
+				</Text>
 			</View>
 			<View style={styles.time}>
-				<Text style={styles.text}>{formattedTime.minutes}</Text>
-				<Text style={styles.dot}>:</Text>
-				<Text style={styles.text}>{formattedTime.seconds}</Text>
-				<Text style={styles.dot}>:</Text>
-				<Text style={styles.text}>{formattedTime.miliseconds}</Text>
+				<Text style={[styles.text, GLOBAL_STYLES.text]}>
+					{formattedTime.minutes}
+				</Text>
+				<Text style={[styles.dot, GLOBAL_STYLES.text]}>:</Text>
+				<Text style={[styles.text, GLOBAL_STYLES.text]}>
+					{formattedTime.seconds}
+				</Text>
+				<Text style={[styles.dot, GLOBAL_STYLES.text]}>:</Text>
+				<Text style={[styles.text, GLOBAL_STYLES.text]}>
+					{formattedTime.miliseconds}
+				</Text>
 			</View>
 		</View>
 	);

@@ -7,6 +7,7 @@ import COLORS from "../config/colors";
 import { ICONS, BUTTON_TYPES, COLOR_TYPES } from "../config/types";
 import useButtonAnimation from "../hooks/useButtonAnimation";
 import useButtonDefaults from "../hooks/useButtonDefaults";
+import GLOBAL_STYLES from "../styles/global";
 
 export default function Button({
 	type,
@@ -66,6 +67,7 @@ export default function Button({
 					style={[
 						buttonDefaults.textStyles,
 						styles.absolute,
+						GLOBAL_STYLES.text,
 						disabled && styles.disabledText,
 					]}
 				>

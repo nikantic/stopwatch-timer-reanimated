@@ -3,6 +3,7 @@ import { View, StyleSheet, TextInput, Text } from "react-native";
 
 import COLORS from "../config/colors";
 import { inputValid } from "../helpers/helpers";
+import GLOBAL_STYLES from "../styles/global";
 
 export default function TimeInput({
 	label,
@@ -34,7 +35,7 @@ export default function TimeInput({
 				keyboardType="numeric"
 				maxLength={2}
 			/>
-			{label && <Text style={styles.label}>{label}</Text>}
+			{label && <Text style={[styles.label, GLOBAL_STYLES.text]}>{label}</Text>}
 		</View>
 	);
 }
