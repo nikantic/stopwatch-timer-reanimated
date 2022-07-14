@@ -25,6 +25,7 @@
 				"foregroundImage": "./assets/adaptive-icon.png",
 				"backgroundColor": "#000"
 			},
+			"permissions": [],
 			"package": "com.nikantic.myexpostopwatchtimer",
 			"versionCode": 1
 		},
