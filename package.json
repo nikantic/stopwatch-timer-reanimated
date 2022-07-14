@@ -20,7 +20,8 @@
     "react-native-reanimated": "~2.8.0",
     "react-native-redash": "^18.0.0",
     "react-native-svg": "12.2.0",
-    "react-native-web": "0.17.7"
+    "react-native-web": "0.17.7",
+    "expo-updates": "~0.13.3"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
