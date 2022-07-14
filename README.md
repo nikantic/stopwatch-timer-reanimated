@@ -1,14 +1,11 @@
-# My Expo Stopwatch
+# Stopwatch & Timer app (React Native Expo)
 
-...
-Important:
 
-- Dont update react native svg to 12.3.0 - breaks web animation for circle: https://github.com/marcuzgabriel/reanimated-animation-library/pull/3
-- This version works fine - "react-native-svg": "12.2.0",
+Proof of concept Stopwatch & Timer app built with React Native and Expo.
 
-To do:
+Important notice:
 
-- Deploy app
+- Don't update *react-native-svg* to `12.3.0` - breaks web animation for circle as mentioned [here](https://github.com/marcuzgabriel/reanimated-animation-library/pull/3) - previous version works fine - **"react-native-svg": "12.2.0"**,
 
 Future:
 
