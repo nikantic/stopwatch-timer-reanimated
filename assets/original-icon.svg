@@ -1,0 +1,12 @@
+<svg width="1024" height="1024" xmlns="http://www.w3.org/2000/svg" style="vector-effect: non-scaling-stroke;" stroke="null">
+ <g stroke="null">
+  <g stroke="null" id="svg_5">
+   <ellipse stroke="#000" id="svg_1" fill="#111" cx="511.99998" cy="511.99998" rx="437.54991" ry="437.54991" stroke-width="0"/>
+   <ellipse stroke="#000" id="svg_2" fill="#fff" stroke-width="0" cx="511.99998" cy="511.99998" rx="52.50599" ry="52.50599"/>
+   <line stroke="#fff" id="svg_3" fill="none" x1="511.99998" y1="511.99998" x2="511.99998" y2="126.95606"/>
+  </g>
+  <line stroke-width="15" id="svg_9" y2="117.70319" x2="513.44927" y1="490.16734" x1="513.44927" stroke="#ffffff" fill="none"/>
+  <ellipse stroke="#ff0063" stroke-width="32" ry="149.99999" rx="149.99999" id="svg_11" cy="512.00001" cx="512" fill="none"/>
+  <ellipse ry="180" rx="180" id="svg_13" cy="512.00002" cx="512" stroke-width="32" stroke="#0088dd" fill="none"/>
+ </g>
+</svg>

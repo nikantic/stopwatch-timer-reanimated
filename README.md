@@ -8,8 +8,6 @@ Important:
 
 To do:
 
-- Create your own bottom navigation simple
-- Test on iOS and Android simulators
 - Deploy app
 
 Future:
