@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { View, StyleSheet, Modal, Text } from "react-native";
 
 import COLORS from "../config/colors";
@@ -14,7 +14,7 @@ export default function ModalWrapper({
 	children: JSX.Element;
 }) {
 	return (
-		<Modal transparent animationType="slide" visible={open}>
+		<Modal transparent hardwareAccelerated animationType="slide" visible={open}>
 			<View style={styles.modalView}>
 				<Text style={[styles.heading, GLOBAL_STYLES.text]}>{heading}</Text>
 				<View style={styles.childrenView}>{children}</View>
