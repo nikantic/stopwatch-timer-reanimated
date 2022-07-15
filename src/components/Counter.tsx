@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from "react";
-import { View, ViewStyle } from "react-native";
+import { View, ViewStyle, Alert } from "react-native";
 
 import useCounter from "../hooks/useCounter";
 import AppContext from "../config/context";
@@ -23,6 +23,7 @@ export default function Counter({
 	if (timer && play && counter.value === 0) {
 		setTimeout(() => {
 			controls.reset();
+			Alert.alert("Finished", "Time has finished running.");
 		});
 	}
 

@@ -1,6 +1,6 @@
 # Stopwatch & Timer Reanimated
 
-Proof of concept Stopwatch & Timer app built with React Native, Expo and Reanimated. Licensed under the GPLv3 license.
+Stopwatch & Timer app built with React Native, Expo and Reanimated. Licensed under the GPLv3 license.
 
 ## Download
 
@@ -8,13 +8,9 @@ Proof of concept Stopwatch & Timer app built with React Native, Expo and Reanima
 
 ... expo link
 
-***
-
 ## Screenshots
 
 ...
-
-
 
 ## Credits
 
