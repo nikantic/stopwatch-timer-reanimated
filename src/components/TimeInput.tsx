@@ -29,7 +29,7 @@ export default function TimeInput({
 		<View style={styles.container}>
 			<TextInput
 				autoFocus
-				style={styles.input}
+				style={[styles.input, GLOBAL_STYLES.text]}
 				onChangeText={(val) => handleChange(val)}
 				value={text}
 				keyboardType="numeric"
@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
 	input: {
 		width: 60,
 		height: 60,
-		fontSize: 30,
+		fontSize: 25,
 		textAlign: "center",
 		borderRadius: 15,
 		backgroundColor: COLORS.WHITE,
