@@ -34,7 +34,6 @@ const styles = StyleSheet.create({
 		borderTopEndRadius: 30,
 		bottom: 0,
 		alignItems: "center",
-		flex: 1,
 		borderColor: COLORS.INACTIVE,
 		borderStyle: "solid",
 		borderWidth: 1,
@@ -45,8 +44,6 @@ const styles = StyleSheet.create({
 		},
 		shadowOpacity: 0.25,
 		shadowRadius: 4,
-		elevation: 1,
-		zIndex: 1,
 	},
 	heading: {
 		marginVertical: 20,
