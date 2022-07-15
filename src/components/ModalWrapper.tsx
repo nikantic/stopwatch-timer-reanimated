@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
 import { View, StyleSheet, Modal, Text } from "react-native";
 
 import COLORS from "../config/colors";
+import AppContext from "../config/context";
 import GLOBAL_STYLES from "../styles/global";
 
 export default function ModalWrapper({
@@ -13,8 +14,17 @@ export default function ModalWrapper({
 	heading: string;
 	children: JSX.Element;
 }) {
+	const { controls } = useContext(AppContext);
+
 	return (
-		<Modal transparent hardwareAccelerated animationType="slide" visible={open}>
+		<Modal
+			transparent
+			animationType="slide"
+			visible={open}
+			onRequestClose={() => {
+				controls.openModal && controls.openModal(false);
+			}}
+		>
 			<View style={styles.modalView}>
 				<Text style={[styles.heading, GLOBAL_STYLES.text]}>{heading}</Text>
 				<View style={styles.childrenView}>{children}</View>
@@ -37,13 +47,8 @@ const styles = StyleSheet.create({
 		borderColor: COLORS.INACTIVE,
 		borderStyle: "solid",
 		borderWidth: 1,
-		shadowColor: "#000",
-		shadowOffset: {
-			width: 0,
-			height: 2,
-		},
-		shadowOpacity: 0.25,
-		shadowRadius: 4,
+		elevation: 5,
+		zIndex: 5,
 	},
 	heading: {
 		marginVertical: 20,
