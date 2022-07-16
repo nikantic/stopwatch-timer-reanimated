@@ -3,6 +3,8 @@ import {
 	useAnimatedStyle,
 	withSpring,
 	interpolateColor,
+	withSequence,
+	withTiming,
 } from "react-native-reanimated";
 
 import COLORS from "../config/colors";
@@ -10,7 +12,7 @@ import { COLOR_TYPES } from "../config/types";
 
 const useButtonAnimation = ({
 	color,
-	maxScale = 1.3,
+	maxScale = 1.1,
 }: {
 	color: COLOR_TYPES;
 	maxScale?: number;
@@ -42,16 +44,15 @@ const useButtonAnimation = ({
 		};
 	});
 
-	const scaleIn = () => {
-		animScale.value = withSpring(animConfig.scale.to, {
-			stiffness: 200,
-		});
-	};
-
-	const scaleOut = () => {
-		animScale.value = withSpring(animConfig.scale.from, {
-			stiffness: 300,
-		});
+	const scaleInAndOut = () => {
+		animScale.value = withSequence(
+			withTiming(animConfig.scale.to, {
+				duration: 150,
+			}),
+			withTiming(animConfig.scale.from, {
+				duration: 150,
+			})
+		);
 	};
 
 	const animateBgColor = (pressed: boolean) => {
@@ -60,8 +61,7 @@ const useButtonAnimation = ({
 
 	return {
 		animStyle,
-		scaleIn,
-		scaleOut,
+		scaleInAndOut,
 		animateBgColor,
 	};
 };

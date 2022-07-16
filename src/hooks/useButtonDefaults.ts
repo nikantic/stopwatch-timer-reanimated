@@ -13,7 +13,7 @@ type IButtonDefaults = {
 const setDefaults = ({
 	iconSize = 34,
 	iconColor = COLORS.WHITE,
-	maxScale = 1.3,
+	maxScale = 1.1,
 	styles,
 	textStyles,
 }: IButtonDefaults) => {
@@ -70,11 +70,9 @@ const useButtonDefaults = ({
 		[BUTTON_TYPES.RECTANGLE]: setDefaults({
 			iconSize: 24,
 			iconColor: COLORS.GRAY,
-			maxScale: 1.2,
 			styles: styles[type],
 		}),
 		[BUTTON_TYPES.TEXT]: setDefaults({
-			maxScale: 1.1,
 			styles: styles[type],
 			textStyles: textStyles.text,
 		}),
