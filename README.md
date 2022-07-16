@@ -4,13 +4,18 @@ Stopwatch & Timer app built with React Native, Expo and Reanimated. Licensed und
 
 ## Download
 
-... google play link
+![google-play-logo](https://raw.githubusercontent.com/nikantic/stopwatch-timer-reanimated/master/assets/images/google-play-badge.png)
 
-... expo link
+![google-go-logo](https://raw.githubusercontent.com/nikantic/stopwatch-timer-reanimated/be04b6ef25a3eaf3f4833b56513ecf253f748c37/assets/images/expo-go.svg)
 
 ## Screenshots
 
-...
+![screenshot-1](https://raw.githubusercontent.com/nikantic/stopwatch-timer-reanimated/master/assets/images/screenshots/compressed/1-compressed.jpg)
+![screenshot-2](https://raw.githubusercontent.com/nikantic/stopwatch-timer-reanimated/master/assets/images/screenshots/compressed/2-compressed.jpg)
+![screenshot-3](https://raw.githubusercontent.com/nikantic/stopwatch-timer-reanimated/master/assets/images/screenshots/compressed/3-compressed.jpg)
+![screenshot-5](https://raw.githubusercontent.com/nikantic/stopwatch-timer-reanimated/master/assets/images/screenshots/compressed/5-compressed.jpg)
+![screenshot-6](https://raw.githubusercontent.com/nikantic/stopwatch-timer-reanimated/master/assets/images/screenshots/compressed/6-compressed.jpg)
+![screenshot-7](https://raw.githubusercontent.com/nikantic/stopwatch-timer-reanimated/master/assets/images/screenshots/compressed/7-compressed.jpg)
 
 ## Credits
 
