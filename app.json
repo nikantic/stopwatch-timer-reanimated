@@ -1,7 +1,7 @@
 {
 	"expo": {
-		"name": "my-expo-stopwatch-timer",
-		"slug": "my-expo-stopwatch-timer",
+		"name": "stopwatch-timer-reanimated",
+		"slug": "stopwatch-timer-reanimated",
 		"version": "1.0.0",
 		"orientation": "portrait",
 		"icon": "./assets/icon.png",
@@ -17,7 +17,7 @@
 		"assetBundlePatterns": ["**/*"],
 		"ios": {
 			"supportsTablet": true,
-			"bundleIdentifier": "com.nikantic.myexpostopwatchtimer",
+			"bundleIdentifier": "com.nikantic.stopwatchtimerreanimated",
 			"buildNumber": "1.0.0"
 		},
 		"android": {
@@ -26,7 +26,7 @@
 				"backgroundColor": "#000000"
 			},
 			"permissions": [],
-			"package": "com.nikantic.myexpostopwatchtimer",
+			"package": "com.nikantic.stopwatchtimerreanimated",
 			"versionCode": 1
 		},
 		"androidNavigationBar": {
