@@ -2,11 +2,19 @@
 
 Stopwatch & Timer app built with React Native, Expo and Reanimated. Licensed under the GPLv3 license.
 
+- Stopwatch & Timer apps in one package
+- Play, pause and save consecutive elapsed times on Stopwatch
+- Sort and compare results in millisecond precision
+- Set and let time pass in hours on Timer
+- Beautiful animations and modern design
+
 ## Download
 
-![google-play-logo](https://raw.githubusercontent.com/nikantic/stopwatch-timer-reanimated/master/assets/images/google-play-badge.png)
+[![google-play-link](https://raw.githubusercontent.com/nikantic/stopwatch-timer-reanimated/master/assets/images/google-play-badge.png)](https://raw.githubusercontent.com/nikantic/stopwatch-timer-reanimated/master/assets/images/google-play-badge.png)
 
-![google-go-logo](https://raw.githubusercontent.com/nikantic/stopwatch-timer-reanimated/be04b6ef25a3eaf3f4833b56513ecf253f748c37/assets/images/expo-go.svg)
+> Preview in Expo Go app on any device by visiting [Expo project](https://expo.dev/@nikantic/stopwatch-timer-reanimated) or simply scan the QR code below
+
+[![expo-go-link](https://raw.githubusercontent.com/nikantic/stopwatch-timer-reanimated/be04b6ef25a3eaf3f4833b56513ecf253f748c37/assets/images/expo-go.svg)](https://expo.dev/@nikantic/stopwatch-timer-reanimated)
 
 ## Screenshots
 
