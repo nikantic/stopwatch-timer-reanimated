@@ -60,7 +60,7 @@ export default function Results() {
 				<View style={styles.button}>
 					<Button
 						type={BUTTON_TYPES.TEXT}
-						color={COLORS.INACTIVE}
+						color={COLORS.BLACK}
 						size={50}
 						onPress={() => controls.openModal && controls.openModal(false)}
 						text="Close"
