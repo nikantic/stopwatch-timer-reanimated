@@ -1,50 +1,60 @@
 {
-  "expo": {
-    "name": "Stopwatch & Timer Reanimated",
-    "description": "Stopwatch & Timer app built with React Native, Expo and Reanimated.",
-    "slug": "stopwatch-timer-reanimated",
-    "version": "1.0.0",
-    "orientation": "portrait",
-    "icon": "./assets/icon.png",
-    "userInterfaceStyle": "dark",
-    "githubUrl": "https://github.com/nikantic/stopwatch-timer-reanimated",
-    "splash": {
-      "image": "./assets/splash.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#000000"
-    },
-    "updates": {
-      "fallbackToCacheTimeout": 0
-    },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
-    "ios": {
-      "supportsTablet": true,
-      "bundleIdentifier": "com.nikantic.stopwatchtimerreanimated",
-      "buildNumber": "1.0.0"
-    },
-    "android": {
-      "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#000000"
-      },
-      "permissions": [],
-      "playStoreUrl": "https://play.google.com/store/apps/details?id=com.nikantic.stopwatchtimerreanimated",
-      "package": "com.nikantic.stopwatchtimerreanimated",
-      "versionCode": 3
-    },
-    "androidNavigationBar": {
-      "barStyle": "light-content",
-      "backgroundColor": "#000000"
-    },
-    "web": {
-      "favicon": "./assets/favicon.png"
-    },
-    "extra": {
-      "eas": {
-        "projectId": "34e53928-0631-49e4-a2eb-e7ef5b6f44a2"
-      }
-    }
-  }
+	"expo": {
+		"name": "Stopwatch & Timer Reanimated",
+		"description": "Stopwatch & Timer app built with React Native, Expo and Reanimated.",
+		"slug": "stopwatch-timer-reanimated",
+		"version": "1.0.0",
+		"orientation": "portrait",
+		"icon": "./assets/icon.png",
+		"userInterfaceStyle": "dark",
+		"githubUrl": "https://github.com/nikantic/stopwatch-timer-reanimated",
+		"splash": {
+			"image": "./assets/splash.png",
+			"resizeMode": "contain",
+			"backgroundColor": "#000000"
+		},
+		"updates": {
+			"fallbackToCacheTimeout": 0
+		},
+		"assetBundlePatterns": ["**/*"],
+		"ios": {
+			"supportsTablet": true,
+			"bundleIdentifier": "com.nikantic.stopwatchtimerreanimated",
+			"buildNumber": "1.0.0"
+		},
+		"android": {
+			"adaptiveIcon": {
+				"foregroundImage": "./assets/adaptive-icon.png",
+				"backgroundColor": "#000000"
+			},
+			"permissions": [],
+			"playStoreUrl": "https://play.google.com/store/apps/details?id=com.nikantic.stopwatchtimerreanimated",
+			"package": "com.nikantic.stopwatchtimerreanimated",
+			"versionCode": 4
+		},
+		"androidNavigationBar": {
+			"barStyle": "light-content",
+			"backgroundColor": "#000000"
+		},
+		"web": {
+			"favicon": "./assets/favicon.png"
+		},
+		"extra": {
+			"eas": {
+				"projectId": "34e53928-0631-49e4-a2eb-e7ef5b6f44a2"
+			}
+		},
+		"plugins": [
+			[
+				"expo-build-properties",
+				{
+					"android": {
+						"compileSdkVersion": 33,
+						"targetSdkVersion": 33,
+						"buildToolsVersion": "33.0.0"
+					}
+				}
+			]
+		]
+	}
 }
