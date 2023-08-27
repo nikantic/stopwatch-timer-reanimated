@@ -41,8 +41,9 @@ Stopwatch & Timer app built with React Native, Expo and Reanimated. Licensed und
 
 ## Development
 
+- Works well with `expo-cli@5.5.1` (install globally with `npm i -g expo-cli@5.5.1`)
+- Don't upgrade _react-native-svg_ to `12.3.0` - breaks web animation for Circle as mentioned [here](https://github.com/marcuzgabriel/reanimated-animation-library/pull/3) - previous version works fine: `"react-native-svg": "12.2.0"`
 - Written in TypeScript
-- Don't upgrade _react-native-svg_ to `12.3.0` - breaks web animation for Circle as mentioned [here](https://github.com/marcuzgabriel/reanimated-animation-library/pull/3) - previous version works fine: `"react-native-svg": "12.2.0"`,
 
 ## Future plans
 
